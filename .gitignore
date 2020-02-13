@@ -1,4 +1,6 @@
 node_modules
 contracts
+coverage
+coverage.json
 .secret
 .infura

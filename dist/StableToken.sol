@@ -1,118 +1,3 @@
-// File: contracts/@openzeppelin/contracts/GSN/Context.sol
-
-pragma solidity ^0.5.0;
-
-/**
- * @dev Provides information about the current execution context, including the
- * sender of the transaction and its data. While these are generally available
- * via msg.sender and msg.data, they should not be accessed in such a direct
- * manner, since when dealing with GSN meta-transactions the account sending and
- * paying for execution may not be the actual sender (as far as an application
- * is concerned).
- *
- * This contract is only required for intermediate, library-like contracts.
- */
-contract Context {
-    // Empty internal constructor, to prevent people from mistakenly deploying
-    // an instance of this contract, which should be used via inheritance.
-    constructor() internal {}
-    // solhint-disable-previous-line no-empty-blocks
-
-    function _msgSender() internal view returns (address payable) {
-        return msg.sender;
-    }
-
-    function _msgData() internal view returns (bytes memory) {
-        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691
-        return msg.data;
-    }
-}
-
-// File: contracts/@openzeppelin/contracts/ownership/Ownable.sol
-
-pragma solidity ^0.5.0;
-
-/**
- * @dev Contract module which provides a basic access control mechanism, where
- * there is an account (an owner) that can be granted exclusive access to
- * specific functions.
- *
- * This module is used through inheritance. It will make available the modifier
- * `onlyOwner`, which can be applied to your functions to restrict their use to
- * the owner.
- */
-contract Ownable is Context {
-    address private _owner;
-
-    event OwnershipTransferred(
-        address indexed previousOwner,
-        address indexed newOwner
-    );
-
-    /**
-     * @dev Initializes the contract setting the deployer as the initial owner.
-     */
-    constructor() internal {
-        address msgSender = _msgSender();
-        _owner = msgSender;
-        emit OwnershipTransferred(address(0), msgSender);
-    }
-
-    /**
-     * @dev Returns the address of the current owner.
-     */
-    function owner() public view returns (address) {
-        return _owner;
-    }
-
-    /**
-     * @dev Throws if called by any account other than the owner.
-     */
-    modifier onlyOwner() {
-        require(isOwner(), "Ownable: caller is not the owner");
-        _;
-    }
-
-    /**
-     * @dev Returns true if the caller is the current owner.
-     */
-    function isOwner() public view returns (bool) {
-        return _msgSender() == _owner;
-    }
-
-    /**
-     * @dev Leaves the contract without owner. It will not be possible to call
-     * `onlyOwner` functions anymore. Can only be called by the current owner.
-     *
-     * NOTE: Renouncing ownership will leave the contract without an owner,
-     * thereby removing any functionality that is only available to the owner.
-     */
-    function renounceOwnership() public onlyOwner {
-        emit OwnershipTransferred(_owner, address(0));
-        _owner = address(0);
-    }
-
-    /**
-     * @dev Transfers ownership of the contract to a new account (`newOwner`).
-     * Can only be called by the current owner.
-     */
-    function transferOwnership(address newOwner) public onlyOwner {
-        _transferOwnership(newOwner);
-    }
-
-    /**
-     * @dev Transfers ownership of the contract to a new account (`newOwner`).
-     */
-    function _transferOwnership(address newOwner) internal {
-        require(
-            newOwner != address(0),
-            "Ownable: new owner is the zero address"
-        );
-        emit OwnershipTransferred(_owner, newOwner);
-        _owner = newOwner;
-    }
-}
-
 // File: contracts/@openzeppelin/contracts/access/Roles.sol
 
 pragma solidity ^0.5.0;
@@ -156,94 +41,35 @@ library Roles {
     }
 }
 
-// File: contracts/@openzeppelin/contracts/token/ERC20/IERC20.sol
+// File: contracts/@openzeppelin/contracts/GSN/Context.sol
 
 pragma solidity ^0.5.0;
 
-/**
- * @dev Interface of the ERC20 standard as defined in the EIP. Does not include
- * the optional functions; to access them see {ERC20Detailed}.
+/*
+ * @dev Provides information about the current execution context, including the
+ * sender of the transaction and its data. While these are generally available
+ * via msg.sender and msg.data, they should not be accessed in such a direct
+ * manner, since when dealing with GSN meta-transactions the account sending and
+ * paying for execution may not be the actual sender (as far as an application
+ * is concerned).
+ *
+ * This contract is only required for intermediate, library-like contracts.
  */
-interface IERC20 {
-    /**
-     * @dev Returns the amount of tokens in existence.
-     */
-    function totalSupply() external view returns (uint256);
+contract Context {
+    // Empty internal constructor, to prevent people from mistakenly deploying
+    // an instance of this contract, which should be used via inheritance.
+    constructor() internal {}
 
-    /**
-     * @dev Returns the amount of tokens owned by `account`.
-     */
-    function balanceOf(address account) external view returns (uint256);
+    // solhint-disable-previous-line no-empty-blocks
 
-    /**
-     * @dev Moves `amount` tokens from the caller's account to `recipient`.
-     *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * Emits a {Transfer} event.
-     */
-    function transfer(address recipient, uint256 amount)
-        external
-        returns (bool);
+    function _msgSender() internal view returns (address payable) {
+        return msg.sender;
+    }
 
-    /**
-     * @dev Returns the remaining number of tokens that `spender` will be
-     * allowed to spend on behalf of `owner` through {transferFrom}. This is
-     * zero by default.
-     *
-     * This value changes when {approve} or {transferFrom} are called.
-     */
-    function allowance(address owner, address spender)
-        external
-        view
-        returns (uint256);
-
-    /**
-     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
-     *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * IMPORTANT: Beware that changing an allowance with this method brings the risk
-     * that someone may use both the old and the new allowance by unfortunate
-     * transaction ordering. One possible solution to mitigate this race
-     * condition is to first reduce the spender's allowance to 0 and set the
-     * desired value afterwards:
-     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
-     *
-     * Emits an {Approval} event.
-     */
-    function approve(address spender, uint256 amount) external returns (bool);
-
-    /**
-     * @dev Moves `amount` tokens from `sender` to `recipient` using the
-     * allowance mechanism. `amount` is then deducted from the caller's
-     * allowance.
-     *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * Emits a {Transfer} event.
-     */
-    function transferFrom(address sender, address recipient, uint256 amount)
-        external
-        returns (bool);
-
-    /**
-     * @dev Emitted when `value` tokens are moved from one account (`from`) to
-     * another (`to`).
-     *
-     * Note that `value` may be zero.
-     */
-    event Transfer(address indexed from, address indexed to, uint256 value);
-
-    /**
-     * @dev Emitted when the allowance of a `spender` for an `owner` is set by
-     * a call to {approve}. `value` is the new allowance.
-     */
-    event Approval(
-        address indexed owner,
-        address indexed spender,
-        uint256 value
-    );
+    function _msgData() internal view returns (bytes memory) {
+        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691
+        return msg.data;
+    }
 }
 
 // File: contracts/@openzeppelin/contracts/math/SafeMath.sol
@@ -417,42 +243,364 @@ library SafeMath {
     }
 }
 
-// File: contracts/@openzeppelin/contracts/token/ERC20/ERC20.sol
+// File: contracts/@openzeppelin/contracts/ownership/Ownable.sol
 
 pragma solidity ^0.5.0;
 
 /**
- * @dev Implementation of the {IERC20} interface.
+ * @dev Contract module which provides a basic access control mechanism, where
+ * there is an account (an owner) that can be granted exclusive access to
+ * specific functions.
  *
- * This implementation is agnostic to the way tokens are created. This means
- * that a supply mechanism has to be added in a derived contract using {_mint}.
- * For a generic mechanism see {ERC20Mintable}.
- *
- * TIP: For a detailed writeup see our guide
- * https://forum.zeppelin.solutions/t/how-to-implement-erc20-supply-mechanisms/226[How
- * to implement supply mechanisms].
- *
- * We have followed general OpenZeppelin guidelines: functions revert instead
- * of returning `false` on failure. This behavior is nonetheless conventional
- * and does not conflict with the expectations of ERC20 applications.
- *
- * Additionally, an {Approval} event is emitted on calls to {transferFrom}.
- * This allows applications to reconstruct the allowance for all accounts just
- * by listening to said events. Other implementations of the EIP may not emit
- * these events, as it isn't required by the specification.
- *
- * Finally, the non-standard {decreaseAllowance} and {increaseAllowance}
- * functions have been added to mitigate the well-known issues around setting
- * allowances. See {IERC20-approve}.
+ * This module is used through inheritance. It will make available the modifier
+ * `onlyOwner`, which can be applied to your functions to restrict their use to
+ * the owner.
  */
-contract ERC20 is Context, IERC20 {
+contract Ownable is Context {
+    address private _owner;
+
+    event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+    );
+
+    /**
+     * @dev Initializes the contract setting the deployer as the initial owner.
+     */
+    constructor() internal {
+        address msgSender = _msgSender();
+        _owner = msgSender;
+        emit OwnershipTransferred(address(0), msgSender);
+    }
+
+    /**
+     * @dev Returns the address of the current owner.
+     */
+    function owner() public view returns (address) {
+        return _owner;
+    }
+
+    /**
+     * @dev Throws if called by any account other than the owner.
+     */
+    modifier onlyOwner() {
+        require(isOwner(), "Ownable: caller is not the owner");
+        _;
+    }
+
+    /**
+     * @dev Returns true if the caller is the current owner.
+     */
+    function isOwner() public view returns (bool) {
+        return _msgSender() == _owner;
+    }
+
+    /**
+     * @dev Leaves the contract without owner. It will not be possible to call
+     * `onlyOwner` functions anymore. Can only be called by the current owner.
+     *
+     * NOTE: Renouncing ownership will leave the contract without an owner,
+     * thereby removing any functionality that is only available to the owner.
+     */
+    function renounceOwnership() public onlyOwner {
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
+    }
+
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Can only be called by the current owner.
+     */
+    function transferOwnership(address newOwner) public onlyOwner {
+        _transferOwnership(newOwner);
+    }
+
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     */
+    function _transferOwnership(address newOwner) internal {
+        require(
+            newOwner != address(0),
+            "Ownable: new owner is the zero address"
+        );
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
+    }
+}
+
+// File: contracts/@openzeppelin/contracts/token/ERC20/IERC20.sol
+
+pragma solidity ^0.5.0;
+
+/**
+ * @dev Interface of the ERC20 standard as defined in the EIP. Does not include
+ * the optional functions; to access them see {ERC20Detailed}.
+ */
+interface IERC20 {
+    /**
+     * @dev Returns the amount of tokens in existence.
+     */
+    function totalSupply() external view returns (uint256);
+
+    /**
+     * @dev Returns the amount of tokens owned by `account`.
+     */
+    function balanceOf(address account) external view returns (uint256);
+
+    /**
+     * @dev Moves `amount` tokens from the caller's account to `recipient`.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transfer(address recipient, uint256 amount)
+        external
+        returns (bool);
+
+    /**
+     * @dev Returns the remaining number of tokens that `spender` will be
+     * allowed to spend on behalf of `owner` through {transferFrom}. This is
+     * zero by default.
+     *
+     * This value changes when {approve} or {transferFrom} are called.
+     */
+    function allowance(address owner, address spender)
+        external
+        view
+        returns (uint256);
+
+    /**
+     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * IMPORTANT: Beware that changing an allowance with this method brings the risk
+     * that someone may use both the old and the new allowance by unfortunate
+     * transaction ordering. One possible solution to mitigate this race
+     * condition is to first reduce the spender's allowance to 0 and set the
+     * desired value afterwards:
+     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+     *
+     * Emits an {Approval} event.
+     */
+    function approve(address spender, uint256 amount) external returns (bool);
+
+    /**
+     * @dev Moves `amount` tokens from `sender` to `recipient` using the
+     * allowance mechanism. `amount` is then deducted from the caller's
+     * allowance.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transferFrom(address sender, address recipient, uint256 amount)
+        external
+        returns (bool);
+
+    /**
+     * @dev Emitted when `value` tokens are moved from one account (`from`) to
+     * another (`to`).
+     *
+     * Note that `value` may be zero.
+     */
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    /**
+     * @dev Emitted when the allowance of a `spender` for an `owner` is set by
+     * a call to {approve}. `value` is the new allowance.
+     */
+    event Approval(
+        address indexed owner,
+        address indexed spender,
+        uint256 value
+    );
+}
+
+// File: contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol
+
+pragma solidity ^0.5.0;
+
+/**
+ * @dev Interface of the ERC20Fee standard.
+ */
+interface IERC20Fee {
+    /**
+     * @dev Returns the `basisPointsRate`.
+     */
+    function basisPointsRate() external view returns (uint256);
+
+    /**
+     * @dev Returns the `maximumFee`.
+     */
+    function maximumFee() external view returns (uint256);
+
+    /**
+     * @dev Returns the `_feesCollector`.
+     */
+    function feesCollector() external view returns (address);
+
+    /**
+     * @dev Sets contract fees collector to a new account (`newFeesCollector`).
+     */
+    function setFeesCollector(address newFeesCollector) external returns (bool);
+
+    /**
+     * @dev Calculates fee for account.
+     *
+     * @return An uint256 value representing the fee value.
+     */
+    function calculateFee(address account, uint256 amount)
+        external
+        returns (uint256);
+
+    /**
+     * @dev Sets `_basisPointsRate` and `_maximumFee`.
+     *
+     * @return A bool value indicating whether the operation succeeded.
+     */
+    function setParams(uint256 newBasisPointsRate, uint256 newMaximumFee)
+        external
+        returns (bool);
+
+    /**
+     * @dev Emitted when `_basisPointsRate` and `_maximumFee` parameters
+     * have been changed.
+     */
+    event Params(
+        uint256 indexed newBasisPointsRate,
+        uint256 indexed newMaximumFee
+    );
+
+    /**
+     * @dev Emitted when `basisPointsRate`, `maximumFee` and  `minimumFee`
+     * parameters for account have been changed.
+     */
+    event SpecialParams(
+        address indexed account,
+        uint256 indexed newBasisPointsRate,
+        uint256 newMaximumFee,
+        uint256 newMinimumFee
+    );
+
+    /**
+     * @dev Emitted when `value` fees are moved to fees collector.
+     */
+    event Fee(address indexed feesCollector, uint256 indexed fee);
+
+    /**
+     * @dev Emitted when `_feesCollector` parameter have been changed.
+     */
+    event FeesCollector(
+        address indexed feesCollector,
+        address indexed newFeesCollector
+    );
+}
+
+// File: contracts/@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol
+
+pragma solidity ^0.5.0;
+
+/**
+ * @dev Optional functions from the ERC20 standard.
+ */
+contract ERC20Detailed is IERC20 {
+    string private _name;
+    string private _symbol;
+    uint8 private _decimals;
+
+    /**
+     * @dev Sets the values for `name`, `symbol`, and `decimals`. All three of
+     * these values are immutable: they can only be set once during
+     * construction.
+     */
+    constructor(string memory name, string memory symbol, uint8 decimals)
+        public
+    {
+        _name = name;
+        _symbol = symbol;
+        _decimals = decimals;
+    }
+
+    /**
+     * @dev Returns the name of the token.
+     */
+    function name() public view returns (string memory) {
+        return _name;
+    }
+
+    /**
+     * @dev Returns the symbol of the token, usually a shorter version of the
+     * name.
+     */
+    function symbol() public view returns (string memory) {
+        return _symbol;
+    }
+
+    /**
+     * @dev Returns the number of decimals used to get its user representation.
+     * For example, if `decimals` equals `2`, a balance of `505` tokens should
+     * be displayed to a user as `5,05` (`505 / 10 ** 2`).
+     *
+     * Tokens usually opt for a value of 18, imitating the relationship between
+     * Ether and Wei.
+     *
+     * NOTE: This information is only used for _display_ purposes: it in
+     * no way affects any of the arithmetic of the contract, including
+     * {IERC20-balanceOf} and {IERC20-transfer}.
+     */
+    function decimals() public view returns (uint8) {
+        return _decimals;
+    }
+}
+
+// File: contracts/@openzeppelin/contracts/token/ERC20/ERC20Fee.sol
+
+pragma solidity ^0.5.0;
+
+/**
+ * @dev Implementation of the {IERC20Fee} interface.
+*/
+contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     using SafeMath for uint256;
 
-    mapping(address => uint256) private _balances;
+    struct SpecialFee {
+        uint256 maximumFee;
+        uint256 minimumFee;
+        uint256 basisPointsRate;
+        bool isActive;
+    }
 
+    mapping(address => uint256) private _balances;
+    mapping(address => SpecialFee) private _fees;
     mapping(address => mapping(address => uint256)) private _allowances;
 
     uint256 private _totalSupply;
+
+    /**
+     * @dev Aditional variables for use if deposit fees
+     * ever became necessary.
+     */
+    uint256 private _basisPointsRate;
+    uint256 private _maximumFee;
+
+    address private _feesCollector;
+
+    /**
+     * @dev Sets the values for `name`, `symbol`, `decimals`,
+     * `_basisPointsRate` and `_maximumFee`. 
+     *
+     * `name`, `symbol`, `decimals` values are immutable: 
+     * they can only be set once during construction.
+     */
+    constructor(string memory name, string memory symbol, uint8 decimals)
+        public
+        ERC20Detailed(name, symbol, decimals)
+    {
+        _basisPointsRate = 0;
+        _maximumFee = 0;
+    }
 
     /**
      * @dev See {IERC20-totalSupply}.
@@ -466,6 +614,103 @@ contract ERC20 is Context, IERC20 {
      */
     function balanceOf(address account) public view returns (uint256) {
         return _balances[account];
+    }
+
+    /**
+     * @dev See {IERC20Fee-basisPointsRate}.
+     */
+    function basisPointsRate() public view returns (uint256) {
+        return _basisPointsRate;
+    }
+
+    /**
+     * @dev See {IERC20Fee-maximumFee}.
+     */
+    function maximumFee() public view returns (uint256) {
+        return _maximumFee;
+    }
+
+    /**
+     * @dev See {IERC20Fee-feesCollector}.
+     */
+    function feesCollector() public view returns (address) {
+        return _feesCollector;
+    }
+
+    /**
+     * @dev See {IERC20Fee-setFeesCollector}.
+     */
+    function setFeesCollector(address newFeesCollector)
+        public
+        onlyOwner
+        returns (bool)
+    {
+        require(
+            newFeesCollector != address(0),
+            "SetFeesCollector: new fees collector is the zero address"
+        );
+        emit FeesCollector(_feesCollector, newFeesCollector);
+        _feesCollector = newFeesCollector;
+        return true;
+    }
+
+    /**
+     * @dev See {IERC20Fee-setParams}.
+     */
+    function setParams(uint256 newBasisPoints, uint256 newMaxFee)
+        external
+        onlyOwner
+        returns (bool)
+    {
+        _basisPointsRate = newBasisPoints;
+        _maximumFee = newMaxFee.mul(10**uint256(decimals()));
+        emit Params(_basisPointsRate, _maximumFee);
+        return true;
+    }
+
+    /**
+     * @dev See {IERC20Fee-setSpecialParams}.
+     */
+    function setSpecialParams(
+        address account,
+        uint256 newBasisPoints,
+        uint256 newMaxFee,
+        uint256 newMinFee
+    ) external onlyOwner returns (bool) {
+        SpecialFee memory newSpecialParams = SpecialFee({
+            basisPointsRate: newBasisPoints,
+            maximumFee: newMaxFee.mul(10**uint256(decimals())),
+            minimumFee: newMinFee.mul(10**uint256(decimals())),
+            isActive: true
+        });
+
+        _fees[account] = newSpecialParams;
+        emit SpecialParams(account, newBasisPoints, newMaxFee, newMinFee);
+        return true;
+    }
+
+    /**
+     * @dev See {IERC20Fee-calculateFee}.
+     */
+    function calculateFee(address account, uint256 amount)
+        public
+        returns (uint256)
+    {
+        SpecialFee memory params = _fees[account];
+
+        if (params.isActive) {
+            uint256 fee = (amount.mul(params.basisPointsRate)).div(10000);
+
+            if (fee > params.maximumFee) fee = params.maximumFee;
+
+            return fee;
+        }
+
+        uint256 fee = (amount.mul(_basisPointsRate)).div(10000);
+
+        if (fee > _maximumFee) fee = _maximumFee;
+
+        return fee;
     }
 
     /**
@@ -609,8 +854,17 @@ contract ERC20 is Context, IERC20 {
             amount,
             "ERC20: transfer amount exceeds balance"
         );
-        _balances[recipient] = _balances[recipient].add(amount);
-        emit Transfer(sender, recipient, amount);
+
+        uint256 fee = calculateFee(sender, amount);
+        uint256 sendAmount = amount.sub(fee);
+
+        _balances[recipient] = _balances[recipient].add(sendAmount);
+        emit Transfer(sender, recipient, sendAmount);
+
+        if (fee > 0) {
+            _balances[_feesCollector] = _balances[_feesCollector].add(fee);
+            emit Fee(_feesCollector, fee);
+        }
     }
 
     /** @dev Creates `amount` tokens and assigns them to `account`, increasing
@@ -692,65 +946,8 @@ contract ERC20 is Context, IERC20 {
     }
 }
 
-// File: contracts/@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol
-
-pragma solidity ^0.5.0;
-
-/**
- * @dev Optional functions from the ERC20 standard.
- */
-contract ERC20Detailed is IERC20 {
-    string private _name;
-    string private _symbol;
-    uint8 private _decimals;
-
-    /**
-     * @dev Sets the values for `name`, `symbol`, and `decimals`. All three of
-     * these values are immutable: they can only be set once during
-     * construction.
-     */
-    constructor(string memory name, string memory symbol, uint8 decimals)
-        public
-    {
-        _name = name;
-        _symbol = symbol;
-        _decimals = decimals;
-    }
-
-    /**
-     * @dev Returns the name of the token.
-     */
-    function name() public view returns (string memory) {
-        return _name;
-    }
-
-    /**
-     * @dev Returns the symbol of the token, usually a shorter version of the
-     * name.
-     */
-    function symbol() public view returns (string memory) {
-        return _symbol;
-    }
-
-    /**
-     * @dev Returns the number of decimals used to get its user representation.
-     * For example, if `decimals` equals `2`, a balance of `505` tokens should
-     * be displayed to a user as `5,05` (`505 / 10 ** 2`).
-     *
-     * Tokens usually opt for a value of 18, imitating the relationship between
-     * Ether and Wei.
-     *
-     * NOTE: This information is only used for _display_ purposes: it in
-     * no way affects any of the arithmetic of the contract, including
-     * {IERC20-balanceOf} and {IERC20-transfer}.
-     */
-    function decimals() public view returns (uint8) {
-        return _decimals;
-    }
-}
-
 // File: contracts/StableToken.sol
 
 pragma solidity ^0.5.0;
 
-contract StableToken is ERC20, ERC20Detailed {}
+contract StableToken is ERC20Fee {}
