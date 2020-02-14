@@ -1,4 +1,5 @@
 production:
+	npm run compile
 	npm run coverage
 	npm run flatting
 	npx prettier --write dist/*.sol

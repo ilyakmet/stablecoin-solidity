@@ -1,36 +1,43 @@
 {
-  "name": "stablecoin-solidity",
-  "version": "1.0.0",
-  "description": "stablecoin-solidity",
-  "main": "index.js",
-  "scripts": {
-    "test": "npx truffle test --show-events",
-    "coverage": "truffle run coverage --network coverage",
-    "prettier:solidity": "npx prettier --write contracts/*.sol",
-    "flatting": "npx truffle-flattener ./contracts/StableToken.sol > ./dist/StableToken.sol"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ilyakmet/stablecoin-solidity.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ilyakmet/stablecoin-solidity/issues"
-  },
-  "homepage": "https://github.com/ilyakmet/stablecoin-solidity#readme",
-  "devDependencies": {
-    "@openzeppelin/contracts": "^2.4.0",
-    "bn.js": "^5.1.1",
-    "chai": "^4.2.0",
-    "chai-bn": "^0.2.0",
-    "prettier": "^1.19.1",
-    "prettier-plugin-solidity": "^1.0.0-alpha.37",
-    "solhint-plugin-prettier": "0.0.4",
-    "solidity-coverage": "^0.7.1",
-    "truffle": "^5.1.11",
-    "truffle-flattener": "^1.4.2",
-    "truffle-hdwallet-provider": "^1.0.17"
-  }
+    "name": "stablecoin-solidity",
+    "version": "1.0.0",
+    "description": "stablecoin-solidity",
+    "main": "index.js",
+    "scripts": {
+        "test": "npx truffle test --show-events",
+        "coverage": "npx truffle run coverage --network coverage",
+        "compile": "npx truffle compile",
+        "prettier:solidity": "npx prettier --write contracts/*.sol",
+        "flatting": "npx truffle-flattener ./contracts/utils/StableCoinDist.sol > ./dist/StableCoinDist.sol"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ilyakmet/stablecoin-solidity.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ilyakmet/stablecoin-solidity/issues"
+    },
+    "homepage": "https://github.com/ilyakmet/stablecoin-solidity#readme",
+    "devDependencies": {
+        "@openzeppelin/contracts": "^2.4.0",
+        "bn.js": "^5.1.1",
+        "chai": "^4.2.0",
+        "chai-bn": "^0.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-base": "^14.0.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-import": "^2.20.1",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-truffle": "^0.3.1",
+        "prettier": "^1.19.1",
+        "prettier-plugin-solidity": "^1.0.0-alpha.37",
+        "solhint-plugin-prettier": "0.0.4",
+        "solidity-coverage": "^0.7.1",
+        "truffle": "^5.1.11",
+        "truffle-flattener": "^1.4.2",
+        "truffle-hdwallet-provider": "^1.0.17"
+    }
 }

@@ -456,13 +456,15 @@ interface IERC20Fee {
         returns (uint256);
 
     /**
-     * @dev Sets `_basisPointsRate` and `_maximumFee`.
+     * @dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`.
      *
      * @return A bool value indicating whether the operation succeeded.
      */
-    function setParams(uint256 newBasisPointsRate, uint256 newMaximumFee)
-        external
-        returns (bool);
+    function setParams(
+        uint256 newBasisPointsRate,
+        uint256 newMinimumFee,
+        uint256 newMaximumFee
+    ) external returns (bool);
 
     /**
      * @dev Emitted when `_basisPointsRate` and `_maximumFee` parameters
@@ -566,9 +568,9 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     using SafeMath for uint256;
 
     struct SpecialFee {
-        uint256 maximumFee;
-        uint256 minimumFee;
         uint256 basisPointsRate;
+        uint256 minimumFee;
+        uint256 maximumFee;
         bool isActive;
     }
 
@@ -583,6 +585,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
      * ever became necessary.
      */
     uint256 private _basisPointsRate;
+    uint256 private _minimumFee;
     uint256 private _maximumFee;
 
     address private _feesCollector;
@@ -600,6 +603,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     {
         _basisPointsRate = 0;
         _maximumFee = 0;
+        _feesCollector = _msgSender();
     }
 
     /**
@@ -631,10 +635,33 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     /**
+     * @dev See {IERC20Fee-minimumFee}.
+     */
+    function minimumFee() public view returns (uint256) {
+        return _minimumFee;
+    }
+
+    /**
      * @dev See {IERC20Fee-feesCollector}.
      */
     function feesCollector() public view returns (address) {
         return _feesCollector;
+    }
+
+    /**
+     * @dev See {IERC20-getSpecialFeesForAccount}.
+     */
+    function fees(address account)
+        public
+        view
+        returns (uint256, uint256, uint256, bool)
+    {
+        return (
+            _fees[account].basisPointsRate,
+            _fees[account].minimumFee,
+            _fees[account].maximumFee,
+            _fees[account].isActive
+        );
     }
 
     /**
@@ -657,12 +684,13 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     /**
      * @dev See {IERC20Fee-setParams}.
      */
-    function setParams(uint256 newBasisPoints, uint256 newMaxFee)
-        external
-        onlyOwner
-        returns (bool)
-    {
+    function setParams(
+        uint256 newBasisPoints,
+        uint256 newMinFee,
+        uint256 newMaxFee
+    ) external onlyOwner returns (bool) {
         _basisPointsRate = newBasisPoints;
+        _minimumFee = newMinFee.mul(10**uint256(decimals()));
         _maximumFee = newMaxFee.mul(10**uint256(decimals()));
         emit Params(_basisPointsRate, _maximumFee);
         return true;
@@ -674,18 +702,19 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     function setSpecialParams(
         address account,
         uint256 newBasisPoints,
+        uint256 newMinFee,
         uint256 newMaxFee,
-        uint256 newMinFee
+        bool state
     ) external onlyOwner returns (bool) {
         SpecialFee memory newSpecialParams = SpecialFee({
             basisPointsRate: newBasisPoints,
-            maximumFee: newMaxFee.mul(10**uint256(decimals())),
             minimumFee: newMinFee.mul(10**uint256(decimals())),
-            isActive: true
+            maximumFee: newMaxFee.mul(10**uint256(decimals())),
+            isActive: state
         });
 
         _fees[account] = newSpecialParams;
-        emit SpecialParams(account, newBasisPoints, newMaxFee, newMinFee);
+        emit SpecialParams(account, newBasisPoints, newMinFee, newMaxFee);
         return true;
     }
 
@@ -696,19 +725,23 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
         public
         returns (uint256)
     {
-        SpecialFee memory params = _fees[account];
+        (uint256 basisPoints, uint256 minFee, uint256 maxFee, bool active) = fees(
+            account
+        );
 
-        if (params.isActive) {
-            uint256 fee = (amount.mul(params.basisPointsRate)).div(10000);
+        if (active) {
+            uint256 fee = (amount.mul(basisPoints)).div(10000);
 
-            if (fee > params.maximumFee) fee = params.maximumFee;
+            if (fee < minFee) fee = minFee;
+            else if (fee > maxFee) fee = maxFee;
 
             return fee;
         }
 
         uint256 fee = (amount.mul(_basisPointsRate)).div(10000);
 
-        if (fee > _maximumFee) fee = _maximumFee;
+        if (fee < _minimumFee) fee = _minimumFee;
+        else if (fee > _maximumFee) fee = _maximumFee;
 
         return fee;
     }
@@ -946,8 +979,8 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 }
 
-// File: contracts/StableToken.sol
+// File: contracts/utils/StableCoinDist.sol
 
 pragma solidity ^0.5.0;
 
-contract StableToken is ERC20Fee {}
+contract StableCoin is ERC20Fee {}
