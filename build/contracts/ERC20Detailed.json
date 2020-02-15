@@ -298,7 +298,7 @@
         "id": 415,
         "nodeType": "ImportDirective",
         "scope": 471,
-        "sourceUnit": 1322,
+        "sourceUnit": 1311,
         "src": "25:22:4",
         "symbolAliases": [],
         "unitAlias": ""
@@ -312,10 +312,10 @@
               "id": 416,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1321,
+              "referencedDeclaration": 1310,
               "src": "135:6:4",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$1321",
+                "typeIdentifier": "t_contract$_IERC20_$1310",
                 "typeString": "contract IERC20"
               }
             },
@@ -325,7 +325,7 @@
           }
         ],
         "contractDependencies": [
-          1321
+          1310
         ],
         "contractKind": "contract",
         "documentation": "@dev Optional functions from the ERC20 standard.",
@@ -333,7 +333,7 @@
         "id": 470,
         "linearizedBaseContracts": [
           470,
-          1321
+          1310
         ],
         "name": "ERC20Detailed",
         "nodeType": "ContractDefinition",
@@ -937,7 +937,7 @@
         "id": 415,
         "nodeType": "ImportDirective",
         "scope": 471,
-        "sourceUnit": 1322,
+        "sourceUnit": 1311,
         "src": "25:22:4",
         "symbolAliases": [],
         "unitAlias": ""
@@ -951,10 +951,10 @@
               "id": 416,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1321,
+              "referencedDeclaration": 1310,
               "src": "135:6:4",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$1321",
+                "typeIdentifier": "t_contract$_IERC20_$1310",
                 "typeString": "contract IERC20"
               }
             },
@@ -964,7 +964,7 @@
           }
         ],
         "contractDependencies": [
-          1321
+          1310
         ],
         "contractKind": "contract",
         "documentation": "@dev Optional functions from the ERC20 standard.",
@@ -972,7 +972,7 @@
         "id": 470,
         "linearizedBaseContracts": [
           470,
-          1321
+          1310
         ],
         "name": "ERC20Detailed",
         "nodeType": "ContractDefinition",
@@ -1554,8 +1554,8 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.23",
-  "updatedAt": "2020-02-14T19:19:42.589Z",
+  "schemaVersion": "3.0.13",
+  "updatedAt": "2020-02-15T16:28:44.214Z",
   "devdoc": {
     "details": "Optional functions from the ERC20 standard.",
     "methods": {

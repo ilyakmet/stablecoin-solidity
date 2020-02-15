@@ -224,14 +224,14 @@
     "absolutePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol",
     "exportedSymbols": {
       "IERC20Fee": [
-        1394
+        1383
       ]
     },
-    "id": 1395,
+    "id": 1384,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1323,
+        "id": 1312,
         "literals": [
           "solidity",
           "^",
@@ -247,9 +247,9 @@
         "contractKind": "interface",
         "documentation": "@dev Interface of the ERC20Fee standard.",
         "fullyImplemented": false,
-        "id": 1394,
+        "id": 1383,
         "linearizedBaseContracts": [
-          1394
+          1383
         ],
         "name": "IERC20Fee",
         "nodeType": "ContractDefinition",
@@ -257,28 +257,28 @@
           {
             "body": null,
             "documentation": "@dev Returns the `basisPointsRate`.",
-            "id": 1328,
+            "id": 1317,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "basisPointsRate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1324,
+              "id": 1313,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "186:2:7"
             },
             "returnParameters": {
-              "id": 1327,
+              "id": 1316,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1326,
+                  "id": 1315,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1328,
+                  "scope": 1317,
                   "src": "212:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -287,7 +287,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1325,
+                    "id": 1314,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "212:7:7",
@@ -302,7 +302,7 @@
               ],
               "src": "211:9:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "162:59:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -311,28 +311,28 @@
           {
             "body": null,
             "documentation": "@dev Returns the `maximumFee`.",
-            "id": 1333,
+            "id": 1322,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "maximumFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1329,
+              "id": 1318,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "300:2:7"
             },
             "returnParameters": {
-              "id": 1332,
+              "id": 1321,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1331,
+                  "id": 1320,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1333,
+                  "scope": 1322,
                   "src": "326:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -341,7 +341,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1330,
+                    "id": 1319,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "326:7:7",
@@ -356,7 +356,7 @@
               ],
               "src": "325:9:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "281:54:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -365,28 +365,28 @@
           {
             "body": null,
             "documentation": "@dev Returns the `_feesCollector`.",
-            "id": 1338,
+            "id": 1327,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "feesCollector",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1334,
+              "id": 1323,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "421:2:7"
             },
             "returnParameters": {
-              "id": 1337,
+              "id": 1326,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1336,
+                  "id": 1325,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1338,
+                  "scope": 1327,
                   "src": "447:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -395,7 +395,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1335,
+                    "id": 1324,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "447:7:7",
@@ -411,7 +411,7 @@
               ],
               "src": "446:9:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "399:57:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -420,22 +420,22 @@
           {
             "body": null,
             "documentation": "@dev Sets contract fees collector to a new account (`newFeesCollector`).",
-            "id": 1345,
+            "id": 1334,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setFeesCollector",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1341,
+              "id": 1330,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1340,
+                  "id": 1329,
                   "name": "newFeesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1345,
+                  "scope": 1334,
                   "src": "584:24:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -444,7 +444,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1339,
+                    "id": 1328,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "584:7:7",
@@ -461,15 +461,15 @@
               "src": "583:26:7"
             },
             "returnParameters": {
-              "id": 1344,
+              "id": 1333,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1343,
+                  "id": 1332,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1345,
+                  "scope": 1334,
                   "src": "628:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -478,7 +478,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1342,
+                    "id": 1331,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "628:4:7",
@@ -493,7 +493,7 @@
               ],
               "src": "627:6:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "558:76:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -502,22 +502,22 @@
           {
             "body": null,
             "documentation": "@dev Calculates fee for account.\n     * @return An uint256 value representing the fee value.",
-            "id": 1354,
+            "id": 1343,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "calculateFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1350,
+              "id": 1339,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1347,
+                  "id": 1336,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1343,
                   "src": "785:15:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -526,7 +526,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1346,
+                    "id": 1335,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "785:7:7",
@@ -541,10 +541,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1349,
+                  "id": 1338,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1343,
                   "src": "802:14:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -553,7 +553,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1348,
+                    "id": 1337,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "802:7:7",
@@ -569,15 +569,15 @@
               "src": "784:33:7"
             },
             "returnParameters": {
-              "id": 1353,
+              "id": 1342,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1352,
+                  "id": 1341,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1343,
                   "src": "852:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -586,7 +586,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1351,
+                    "id": 1340,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "852:7:7",
@@ -601,7 +601,7 @@
               ],
               "src": "851:9:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "763:98:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -610,22 +610,22 @@
           {
             "body": null,
             "documentation": "@dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`.\n     * @return A bool value indicating whether the operation succeeded.",
-            "id": 1365,
+            "id": 1354,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setParams",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1361,
+              "id": 1350,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1356,
+                  "id": 1345,
                   "name": "newBasisPointsRate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1365,
+                  "scope": 1354,
                   "src": "1060:26:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -634,7 +634,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1355,
+                    "id": 1344,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1060:7:7",
@@ -648,10 +648,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1358,
+                  "id": 1347,
                   "name": "newMinimumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1365,
+                  "scope": 1354,
                   "src": "1096:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -660,7 +660,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1357,
+                    "id": 1346,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1096:7:7",
@@ -674,10 +674,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1360,
+                  "id": 1349,
                   "name": "newMaximumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1365,
+                  "scope": 1354,
                   "src": "1127:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -686,7 +686,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1359,
+                    "id": 1348,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1127:7:7",
@@ -702,15 +702,15 @@
               "src": "1050:104:7"
             },
             "returnParameters": {
-              "id": 1364,
+              "id": 1353,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1363,
+                  "id": 1352,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1365,
+                  "scope": 1354,
                   "src": "1173:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -719,7 +719,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1362,
+                    "id": 1351,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1173:4:7",
@@ -734,7 +734,7 @@
               ],
               "src": "1172:6:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "1032:147:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -743,20 +743,20 @@
           {
             "anonymous": false,
             "documentation": "@dev Emitted when `_basisPointsRate` and `_maximumFee` parameters\nhave been changed.",
-            "id": 1371,
+            "id": 1360,
             "name": "Params",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1370,
+              "id": 1359,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1367,
+                  "id": 1356,
                   "indexed": true,
                   "name": "newBasisPointsRate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1371,
+                  "scope": 1360,
                   "src": "1322:34:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -765,7 +765,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1366,
+                    "id": 1355,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1322:7:7",
@@ -779,11 +779,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1369,
+                  "id": 1358,
                   "indexed": true,
                   "name": "newMaximumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1371,
+                  "scope": 1360,
                   "src": "1366:29:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -792,7 +792,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1368,
+                    "id": 1357,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1366:7:7",
@@ -812,20 +812,20 @@
           {
             "anonymous": false,
             "documentation": "@dev Emitted when `basisPointsRate`, `maximumFee` and  `minimumFee`\nparameters for account have been changed.",
-            "id": 1381,
+            "id": 1370,
             "name": "SpecialParams",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1380,
+              "id": 1369,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1373,
+                  "id": 1362,
                   "indexed": true,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1381,
+                  "scope": 1370,
                   "src": "1577:23:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -834,7 +834,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1372,
+                    "id": 1361,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1577:7:7",
@@ -849,11 +849,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1375,
+                  "id": 1364,
                   "indexed": true,
                   "name": "newBasisPointsRate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1381,
+                  "scope": 1370,
                   "src": "1610:34:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -862,7 +862,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1374,
+                    "id": 1363,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1610:7:7",
@@ -876,11 +876,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1377,
+                  "id": 1366,
                   "indexed": false,
                   "name": "newMaximumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1381,
+                  "scope": 1370,
                   "src": "1654:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -889,7 +889,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1376,
+                    "id": 1365,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1654:7:7",
@@ -903,11 +903,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1379,
+                  "id": 1368,
                   "indexed": false,
                   "name": "newMinimumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1381,
+                  "scope": 1370,
                   "src": "1685:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -916,7 +916,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1378,
+                    "id": 1367,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1685:7:7",
@@ -936,20 +936,20 @@
           {
             "anonymous": false,
             "documentation": "@dev Emitted when `value` fees are moved to fees collector.",
-            "id": 1387,
+            "id": 1376,
             "name": "Fee",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1386,
+              "id": 1375,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1383,
+                  "id": 1372,
                   "indexed": true,
                   "name": "feesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1387,
+                  "scope": 1376,
                   "src": "1812:29:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -958,7 +958,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1382,
+                    "id": 1371,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1812:7:7",
@@ -973,11 +973,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1385,
+                  "id": 1374,
                   "indexed": true,
                   "name": "fee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1387,
+                  "scope": 1376,
                   "src": "1843:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -986,7 +986,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1384,
+                    "id": 1373,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1843:7:7",
@@ -1006,20 +1006,20 @@
           {
             "anonymous": false,
             "documentation": "@dev Emitted when `_feesCollector` parameter have been changed.",
-            "id": 1393,
+            "id": 1382,
             "name": "FeesCollector",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1392,
+              "id": 1381,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1389,
+                  "id": 1378,
                   "indexed": true,
                   "name": "feesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1393,
+                  "scope": 1382,
                   "src": "1986:29:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1028,7 +1028,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1388,
+                    "id": 1377,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1986:7:7",
@@ -1043,11 +1043,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1391,
+                  "id": 1380,
                   "indexed": true,
                   "name": "newFeesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1393,
+                  "scope": 1382,
                   "src": "2025:32:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1056,7 +1056,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1390,
+                    "id": 1379,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2025:7:7",
@@ -1075,7 +1075,7 @@
             "src": "1957:107:7"
           }
         ],
-        "scope": 1395,
+        "scope": 1384,
         "src": "77:1989:7"
       }
     ],
@@ -1085,14 +1085,14 @@
     "absolutePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol",
     "exportedSymbols": {
       "IERC20Fee": [
-        1394
+        1383
       ]
     },
-    "id": 1395,
+    "id": 1384,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1323,
+        "id": 1312,
         "literals": [
           "solidity",
           "^",
@@ -1108,9 +1108,9 @@
         "contractKind": "interface",
         "documentation": "@dev Interface of the ERC20Fee standard.",
         "fullyImplemented": false,
-        "id": 1394,
+        "id": 1383,
         "linearizedBaseContracts": [
-          1394
+          1383
         ],
         "name": "IERC20Fee",
         "nodeType": "ContractDefinition",
@@ -1118,28 +1118,28 @@
           {
             "body": null,
             "documentation": "@dev Returns the `basisPointsRate`.",
-            "id": 1328,
+            "id": 1317,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "basisPointsRate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1324,
+              "id": 1313,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "186:2:7"
             },
             "returnParameters": {
-              "id": 1327,
+              "id": 1316,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1326,
+                  "id": 1315,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1328,
+                  "scope": 1317,
                   "src": "212:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1148,7 +1148,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1325,
+                    "id": 1314,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "212:7:7",
@@ -1163,7 +1163,7 @@
               ],
               "src": "211:9:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "162:59:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -1172,28 +1172,28 @@
           {
             "body": null,
             "documentation": "@dev Returns the `maximumFee`.",
-            "id": 1333,
+            "id": 1322,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "maximumFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1329,
+              "id": 1318,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "300:2:7"
             },
             "returnParameters": {
-              "id": 1332,
+              "id": 1321,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1331,
+                  "id": 1320,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1333,
+                  "scope": 1322,
                   "src": "326:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1202,7 +1202,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1330,
+                    "id": 1319,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "326:7:7",
@@ -1217,7 +1217,7 @@
               ],
               "src": "325:9:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "281:54:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -1226,28 +1226,28 @@
           {
             "body": null,
             "documentation": "@dev Returns the `_feesCollector`.",
-            "id": 1338,
+            "id": 1327,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "feesCollector",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1334,
+              "id": 1323,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "421:2:7"
             },
             "returnParameters": {
-              "id": 1337,
+              "id": 1326,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1336,
+                  "id": 1325,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1338,
+                  "scope": 1327,
                   "src": "447:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1256,7 +1256,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1335,
+                    "id": 1324,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "447:7:7",
@@ -1272,7 +1272,7 @@
               ],
               "src": "446:9:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "399:57:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -1281,22 +1281,22 @@
           {
             "body": null,
             "documentation": "@dev Sets contract fees collector to a new account (`newFeesCollector`).",
-            "id": 1345,
+            "id": 1334,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setFeesCollector",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1341,
+              "id": 1330,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1340,
+                  "id": 1329,
                   "name": "newFeesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1345,
+                  "scope": 1334,
                   "src": "584:24:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1305,7 +1305,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1339,
+                    "id": 1328,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "584:7:7",
@@ -1322,15 +1322,15 @@
               "src": "583:26:7"
             },
             "returnParameters": {
-              "id": 1344,
+              "id": 1333,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1343,
+                  "id": 1332,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1345,
+                  "scope": 1334,
                   "src": "628:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1339,7 +1339,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1342,
+                    "id": 1331,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "628:4:7",
@@ -1354,7 +1354,7 @@
               ],
               "src": "627:6:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "558:76:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1363,22 +1363,22 @@
           {
             "body": null,
             "documentation": "@dev Calculates fee for account.\n     * @return An uint256 value representing the fee value.",
-            "id": 1354,
+            "id": 1343,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "calculateFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1350,
+              "id": 1339,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1347,
+                  "id": 1336,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1343,
                   "src": "785:15:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1387,7 +1387,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1346,
+                    "id": 1335,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "785:7:7",
@@ -1402,10 +1402,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1349,
+                  "id": 1338,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1343,
                   "src": "802:14:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1414,7 +1414,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1348,
+                    "id": 1337,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "802:7:7",
@@ -1430,15 +1430,15 @@
               "src": "784:33:7"
             },
             "returnParameters": {
-              "id": 1353,
+              "id": 1342,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1352,
+                  "id": 1341,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1343,
                   "src": "852:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1447,7 +1447,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1351,
+                    "id": 1340,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "852:7:7",
@@ -1462,7 +1462,7 @@
               ],
               "src": "851:9:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "763:98:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1471,22 +1471,22 @@
           {
             "body": null,
             "documentation": "@dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`.\n     * @return A bool value indicating whether the operation succeeded.",
-            "id": 1365,
+            "id": 1354,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setParams",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1361,
+              "id": 1350,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1356,
+                  "id": 1345,
                   "name": "newBasisPointsRate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1365,
+                  "scope": 1354,
                   "src": "1060:26:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1495,7 +1495,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1355,
+                    "id": 1344,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1060:7:7",
@@ -1509,10 +1509,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1358,
+                  "id": 1347,
                   "name": "newMinimumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1365,
+                  "scope": 1354,
                   "src": "1096:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1521,7 +1521,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1357,
+                    "id": 1346,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1096:7:7",
@@ -1535,10 +1535,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1360,
+                  "id": 1349,
                   "name": "newMaximumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1365,
+                  "scope": 1354,
                   "src": "1127:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1547,7 +1547,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1359,
+                    "id": 1348,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1127:7:7",
@@ -1563,15 +1563,15 @@
               "src": "1050:104:7"
             },
             "returnParameters": {
-              "id": 1364,
+              "id": 1353,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1363,
+                  "id": 1352,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1365,
+                  "scope": 1354,
                   "src": "1173:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1580,7 +1580,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1362,
+                    "id": 1351,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1173:4:7",
@@ -1595,7 +1595,7 @@
               ],
               "src": "1172:6:7"
             },
-            "scope": 1394,
+            "scope": 1383,
             "src": "1032:147:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1604,20 +1604,20 @@
           {
             "anonymous": false,
             "documentation": "@dev Emitted when `_basisPointsRate` and `_maximumFee` parameters\nhave been changed.",
-            "id": 1371,
+            "id": 1360,
             "name": "Params",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1370,
+              "id": 1359,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1367,
+                  "id": 1356,
                   "indexed": true,
                   "name": "newBasisPointsRate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1371,
+                  "scope": 1360,
                   "src": "1322:34:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1626,7 +1626,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1366,
+                    "id": 1355,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1322:7:7",
@@ -1640,11 +1640,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1369,
+                  "id": 1358,
                   "indexed": true,
                   "name": "newMaximumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1371,
+                  "scope": 1360,
                   "src": "1366:29:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1653,7 +1653,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1368,
+                    "id": 1357,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1366:7:7",
@@ -1673,20 +1673,20 @@
           {
             "anonymous": false,
             "documentation": "@dev Emitted when `basisPointsRate`, `maximumFee` and  `minimumFee`\nparameters for account have been changed.",
-            "id": 1381,
+            "id": 1370,
             "name": "SpecialParams",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1380,
+              "id": 1369,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1373,
+                  "id": 1362,
                   "indexed": true,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1381,
+                  "scope": 1370,
                   "src": "1577:23:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1695,7 +1695,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1372,
+                    "id": 1361,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1577:7:7",
@@ -1710,11 +1710,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1375,
+                  "id": 1364,
                   "indexed": true,
                   "name": "newBasisPointsRate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1381,
+                  "scope": 1370,
                   "src": "1610:34:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1723,7 +1723,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1374,
+                    "id": 1363,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1610:7:7",
@@ -1737,11 +1737,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1377,
+                  "id": 1366,
                   "indexed": false,
                   "name": "newMaximumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1381,
+                  "scope": 1370,
                   "src": "1654:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1750,7 +1750,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1376,
+                    "id": 1365,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1654:7:7",
@@ -1764,11 +1764,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1379,
+                  "id": 1368,
                   "indexed": false,
                   "name": "newMinimumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1381,
+                  "scope": 1370,
                   "src": "1685:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1777,7 +1777,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1378,
+                    "id": 1367,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1685:7:7",
@@ -1797,20 +1797,20 @@
           {
             "anonymous": false,
             "documentation": "@dev Emitted when `value` fees are moved to fees collector.",
-            "id": 1387,
+            "id": 1376,
             "name": "Fee",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1386,
+              "id": 1375,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1383,
+                  "id": 1372,
                   "indexed": true,
                   "name": "feesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1387,
+                  "scope": 1376,
                   "src": "1812:29:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1819,7 +1819,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1382,
+                    "id": 1371,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1812:7:7",
@@ -1834,11 +1834,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1385,
+                  "id": 1374,
                   "indexed": true,
                   "name": "fee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1387,
+                  "scope": 1376,
                   "src": "1843:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1847,7 +1847,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1384,
+                    "id": 1373,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1843:7:7",
@@ -1867,20 +1867,20 @@
           {
             "anonymous": false,
             "documentation": "@dev Emitted when `_feesCollector` parameter have been changed.",
-            "id": 1393,
+            "id": 1382,
             "name": "FeesCollector",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1392,
+              "id": 1381,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1389,
+                  "id": 1378,
                   "indexed": true,
                   "name": "feesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1393,
+                  "scope": 1382,
                   "src": "1986:29:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1889,7 +1889,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1388,
+                    "id": 1377,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1986:7:7",
@@ -1904,11 +1904,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1391,
+                  "id": 1380,
                   "indexed": true,
                   "name": "newFeesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1393,
+                  "scope": 1382,
                   "src": "2025:32:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1917,7 +1917,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1390,
+                    "id": 1379,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2025:7:7",
@@ -1936,7 +1936,7 @@
             "src": "1957:107:7"
           }
         ],
-        "scope": 1395,
+        "scope": 1384,
         "src": "77:1989:7"
       }
     ],
@@ -1947,8 +1947,8 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.23",
-  "updatedAt": "2020-02-14T19:19:42.600Z",
+  "schemaVersion": "3.0.13",
+  "updatedAt": "2020-02-15T16:28:44.224Z",
   "devdoc": {
     "details": "Interface of the ERC20Fee standard.",
     "methods": {

@@ -1,9 +1,20 @@
 const BN = require("bn.js");
 const chai = require("chai");
 const { expect } = require("chai");
-const { name, symbol, decimals } = require("../constructor");
-// const { calculateFee } = require("../utils/calculate-fee.js");
+const { calculateFee } = require("../utils/calculate-fee.js");
 const ERC20Fee = artifacts.require("ERC20Fee");
+
+const {
+    name,
+    symbol,
+    decimals,
+    basisPointsRate,
+    minimumFee,
+    maximumFee,
+    specialFee,
+    tokenAmount,
+    denominator
+} = require("../config");
 
 chai.use(require("chai-bn")(BN));
 
@@ -12,13 +23,7 @@ contract("ERC20Fee (positive)", accounts => {
 
     const owner = accounts[0];
     const user = accounts[1];
-    const feesCollector = accounts[2];
-    const basisPointsRate = new BN(50, 10);
-    const minimumFee = new BN(20, 10);
-    const maximumFee = new BN(20, 10);
-    const userFeeState = true;
-    const decimals = 6;
-    const tokenAmount = new BN(10 * 10 ** decimals, 10);
+    const feesCollector = accounts[3];
 
     beforeEach("setup contracts instances", async () => {
         ERC20FeeInstance = await ERC20Fee.new(name, symbol, decimals);
@@ -55,17 +60,38 @@ contract("ERC20Fee (positive)", accounts => {
         expect(actualBasisPoints).to.be.a.bignumber.that.equals(
             basisPointsRate
         );
-        expect(actualMinimumFee).to.be.a.bignumber.that.equals(
-            minimumFee.mul(new BN(10 ** decimals, 10))
-        );
-        expect(actualMaximumFee).to.be.a.bignumber.that.equals(
-            maximumFee.mul(new BN(10 ** decimals, 10))
-        );
+        expect(actualMinimumFee).to.be.a.bignumber.that.equals(minimumFee);
+        expect(actualMaximumFee).to.be.a.bignumber.that.equals(maximumFee);
     });
 
     it("should set special parameters", async () => {
         await ERC20FeeInstance.setSpecialParams(
             user,
+            specialFee.basisPointsRate,
+            specialFee.minimumFee,
+            specialFee.maximumFee,
+            specialFee.isActive,
+            {
+                from: owner
+            }
+        );
+
+        const _specialFee = await ERC20FeeInstance.fees(user);
+
+        expect(_specialFee[0]).to.be.a.bignumber.that.equals(
+            specialFee.basisPointsRate
+        );
+        expect(_specialFee[1]).to.be.a.bignumber.that.equals(
+            specialFee.minimumFee
+        );
+        expect(_specialFee[2]).to.be.a.bignumber.that.equals(
+            specialFee.maximumFee
+        );
+        expect(_specialFee[3]).to.equal(specialFee.isActive);
+    });
+
+    it("should calculate fee", async () => {
+        await ERC20FeeInstance.setParams(
             basisPointsRate,
             minimumFee,
             maximumFee,
@@ -74,23 +100,49 @@ contract("ERC20Fee (positive)", accounts => {
             }
         );
 
-        const specialFee = await ERC20FeeInstance.fees(user);
+        const fee = calculateFee(tokenAmount, false);
 
-        expect(specialFee[0]).to.be.a.bignumber.that.equals(basisPointsRate);
-        expect(specialFee[1]).to.be.a.bignumber.that.equals(
-            minimumFee.mul(new BN(10 ** decimals, 10))
+        const actualFee = await ERC20FeeInstance.calculateFee.call(
+            owner,
+            tokenAmount,
+            {
+                from: owner
+            }
         );
-        expect(specialFee[2]).to.be.a.bignumber.that.equals(
-            maximumFee.mul(new BN(10 ** decimals, 10))
-        );
-        expect(specialFee[3]).to.equal(userFeeState);
+
+        expect(actualFee).to.be.a.bignumber.that.equals(fee);
     });
 
-    // todo
-    // it("should calculate fee", async () => {});
-    // it("should calculate special fee", async () => {});
-    // it("should transfer token with fee", async () => {});
-    // it("should transfer token with correct minimum fee", async () => {});
-    // it("should transfer token with correct maximum fee", async () => {});
-    // it("should transfer token with correct special fee", async () => {});
+    it("should calculate special fee", async () => {
+        await ERC20FeeInstance.setParams(
+            basisPointsRate,
+            minimumFee,
+            maximumFee,
+            {
+                from: owner
+            }
+        );
+
+        await ERC20FeeInstance.setSpecialParams(
+            user,
+            specialFee.basisPointsRate,
+            specialFee.minimumFee,
+            specialFee.maximumFee,
+            {
+                from: owner
+            }
+        );
+
+        const fee = calculateFee(tokenAmount, true);
+
+        const actualFee = await ERC20FeeInstance.calculateFee.call(
+            user,
+            tokenAmount,
+            {
+                from: user
+            }
+        );
+
+        expect(actualFee).to.be.a.bignumber.that.equals(fee);
+    });
 });

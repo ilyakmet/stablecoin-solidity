@@ -224,10 +224,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1702,
-                        1703
+                        1697,
+                        1698
                       ],
-                      "referencedDeclaration": 1703,
+                      "referencedDeclaration": 1698,
                       "src": "328:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -539,10 +539,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1702,
-                        1703
+                        1697,
+                        1698
                       ],
-                      "referencedDeclaration": 1703,
+                      "referencedDeclaration": 1698,
                       "src": "581:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -876,10 +876,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1702,
-                        1703
+                        1697,
+                        1698
                       ],
-                      "referencedDeclaration": 1703,
+                      "referencedDeclaration": 1698,
                       "src": "867:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1299,10 +1299,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1702,
-                        1703
+                        1697,
+                        1698
                       ],
-                      "referencedDeclaration": 1703,
+                      "referencedDeclaration": 1698,
                       "src": "328:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1614,10 +1614,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1702,
-                        1703
+                        1697,
+                        1698
                       ],
-                      "referencedDeclaration": 1703,
+                      "referencedDeclaration": 1698,
                       "src": "581:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1951,10 +1951,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1702,
-                        1703
+                        1697,
+                        1698
                       ],
-                      "referencedDeclaration": 1703,
+                      "referencedDeclaration": 1698,
                       "src": "867:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2163,8 +2163,8 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.23",
-  "updatedAt": "2020-02-14T19:19:42.579Z",
+  "schemaVersion": "3.0.13",
+  "updatedAt": "2020-02-15T16:28:44.209Z",
   "devdoc": {
     "details": "Library for managing addresses assigned to a Role.",
     "methods": {},

@@ -2,6 +2,7 @@
 
 pragma solidity ^0.5.0;
 
+
 /**
  * @title Roles
  * @dev Library for managing addresses assigned to a Role.
@@ -45,6 +46,7 @@ library Roles {
 
 pragma solidity ^0.5.0;
 
+
 /*
  * @dev Provides information about the current execution context, including the
  * sender of the transaction and its data. While these are generally available
@@ -75,6 +77,7 @@ contract Context {
 // File: contracts/@openzeppelin/contracts/math/SafeMath.sol
 
 pragma solidity ^0.5.0;
+
 
 /**
  * @dev Wrappers over Solidity's arithmetic operations with added overflow
@@ -247,6 +250,7 @@ library SafeMath {
 
 pragma solidity ^0.5.0;
 
+
 /**
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
@@ -331,6 +335,7 @@ contract Ownable is Context {
 // File: contracts/@openzeppelin/contracts/token/ERC20/IERC20.sol
 
 pragma solidity ^0.5.0;
+
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP. Does not include
@@ -422,6 +427,7 @@ interface IERC20 {
 
 pragma solidity ^0.5.0;
 
+
 /**
  * @dev Interface of the ERC20Fee standard.
  */
@@ -504,6 +510,7 @@ interface IERC20Fee {
 
 pragma solidity ^0.5.0;
 
+
 /**
  * @dev Optional functions from the ERC20 standard.
  */
@@ -561,6 +568,7 @@ contract ERC20Detailed is IERC20 {
 
 pragma solidity ^0.5.0;
 
+
 /**
  * @dev Implementation of the {IERC20Fee} interface.
 */
@@ -587,6 +595,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     uint256 private _basisPointsRate;
     uint256 private _minimumFee;
     uint256 private _maximumFee;
+    uint256 private _denominator;
 
     address private _feesCollector;
 
@@ -604,6 +613,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
         _basisPointsRate = 0;
         _maximumFee = 0;
         _feesCollector = _msgSender();
+        _denominator = 10000;
     }
 
     /**
@@ -628,6 +638,13 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     /**
+     * @dev See {IERC20Fee-minimumFee}.
+     */
+    function minimumFee() public view returns (uint256) {
+        return _minimumFee;
+    }
+
+    /**
      * @dev See {IERC20Fee-maximumFee}.
      */
     function maximumFee() public view returns (uint256) {
@@ -635,10 +652,10 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     /**
-     * @dev See {IERC20Fee-minimumFee}.
+     * @dev See {IERC20Fee-denominator}.
      */
-    function minimumFee() public view returns (uint256) {
-        return _minimumFee;
+    function denominator() public view returns (uint256) {
+        return _denominator;
     }
 
     /**
@@ -690,8 +707,8 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
         uint256 newMaxFee
     ) external onlyOwner returns (bool) {
         _basisPointsRate = newBasisPoints;
-        _minimumFee = newMinFee.mul(10**uint256(decimals()));
-        _maximumFee = newMaxFee.mul(10**uint256(decimals()));
+        _minimumFee = newMinFee;
+        _maximumFee = newMaxFee;
         emit Params(_basisPointsRate, _maximumFee);
         return true;
     }
@@ -708,8 +725,8 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     ) external onlyOwner returns (bool) {
         SpecialFee memory newSpecialParams = SpecialFee({
             basisPointsRate: newBasisPoints,
-            minimumFee: newMinFee.mul(10**uint256(decimals())),
-            maximumFee: newMaxFee.mul(10**uint256(decimals())),
+            minimumFee: newMinFee,
+            maximumFee: newMaxFee,
             isActive: state
         });
 
@@ -730,7 +747,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
         );
 
         if (active) {
-            uint256 fee = (amount.mul(basisPoints)).div(10000);
+            uint256 fee = (amount.mul(basisPoints)).div(_denominator);
 
             if (fee < minFee) fee = minFee;
             else if (fee > maxFee) fee = maxFee;
@@ -738,7 +755,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
             return fee;
         }
 
-        uint256 fee = (amount.mul(_basisPointsRate)).div(10000);
+        uint256 fee = (amount.mul(_basisPointsRate)).div(_denominator);
 
         if (fee < _minimumFee) fee = _minimumFee;
         else if (fee > _maximumFee) fee = _maximumFee;
@@ -880,15 +897,24 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     function _transfer(address sender, address recipient, uint256 amount)
         internal
     {
-        require(sender != address(0), "ERC20: transfer from the zero address");
-        require(recipient != address(0), "ERC20: transfer to the zero address");
-
-        _balances[sender] = _balances[sender].sub(
-            amount,
-            "ERC20: transfer amount exceeds balance"
+        require(
+            sender != address(0),
+            "ERC20Fee: transfer from the zero address"
+        );
+        require(
+            recipient != address(0),
+            "ERC20Fee: transfer to the zero address"
         );
 
         uint256 fee = calculateFee(sender, amount);
+
+        require(amount >= fee, "ERC20Fee: amount less then fee");
+
+        _balances[sender] = _balances[sender].sub(
+            amount,
+            "ERC20Fee: transfer amount exceeds balance"
+        );
+
         uint256 sendAmount = amount.sub(fee);
 
         _balances[recipient] = _balances[recipient].add(sendAmount);
@@ -982,5 +1008,6 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 // File: contracts/utils/StableCoinDist.sol
 
 pragma solidity ^0.5.0;
+
 
 contract StableCoin is ERC20Fee {}
