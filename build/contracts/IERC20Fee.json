@@ -7,7 +7,7 @@
         {
           "indexed": true,
           "internalType": "address",
-          "name": "feesCollector",
+          "name": "_feesCollector",
           "type": "address"
         },
         {
@@ -26,7 +26,7 @@
         {
           "indexed": true,
           "internalType": "address",
-          "name": "feesCollector",
+          "name": "_feesCollector",
           "type": "address"
         },
         {
@@ -45,13 +45,19 @@
         {
           "indexed": true,
           "internalType": "uint256",
-          "name": "newBasisPointsRate",
+          "name": "newBasisPoints",
           "type": "uint256"
         },
         {
           "indexed": true,
           "internalType": "uint256",
-          "name": "newMaximumFee",
+          "name": "newMinFee",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "newMaxFee",
           "type": "uint256"
         }
       ],
@@ -70,19 +76,19 @@
         {
           "indexed": true,
           "internalType": "uint256",
-          "name": "newBasisPointsRate",
+          "name": "newBasisPoints",
           "type": "uint256"
         },
         {
           "indexed": false,
           "internalType": "uint256",
-          "name": "newMaximumFee",
+          "name": "newMinFee",
           "type": "uint256"
         },
         {
           "indexed": false,
           "internalType": "uint256",
-          "name": "newMinimumFee",
+          "name": "newMaxFee",
           "type": "uint256"
         }
       ],
@@ -107,12 +113,78 @@
     {
       "constant": true,
       "inputs": [],
+      "name": "minimumFee",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
       "name": "maximumFee",
       "outputs": [
         {
           "internalType": "uint256",
           "name": "",
           "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "denominator",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "fees",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "payable": false,
@@ -159,32 +231,6 @@
       "constant": false,
       "inputs": [
         {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "calculateFee",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
           "internalType": "uint256",
           "name": "newBasisPointsRate",
           "type": "uint256"
@@ -211,27 +257,94 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "newBasisPoints",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "newMinFee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "newMaxFee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "state",
+          "type": "bool"
+        }
+      ],
+      "name": "setSpecialParams",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "calculateFee",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"feesCollector\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"fee\",\"type\":\"uint256\"}],\"name\":\"Fee\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"feesCollector\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newFeesCollector\",\"type\":\"address\"}],\"name\":\"FeesCollector\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newBasisPointsRate\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newMaximumFee\",\"type\":\"uint256\"}],\"name\":\"Params\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newBasisPointsRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newMaximumFee\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newMinimumFee\",\"type\":\"uint256\"}],\"name\":\"SpecialParams\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"basisPointsRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"calculateFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"feesCollector\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"maximumFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newFeesCollector\",\"type\":\"address\"}],\"name\":\"setFeesCollector\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newBasisPointsRate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMinimumFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMaximumFee\",\"type\":\"uint256\"}],\"name\":\"setParams\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface of the ERC20Fee standard.\",\"methods\":{\"basisPointsRate()\":{\"details\":\"Returns the `basisPointsRate`.\"},\"calculateFee(address,uint256)\":{\"details\":\"Calculates fee for account.\",\"return\":\"An uint256 value representing the fee value.\"},\"feesCollector()\":{\"details\":\"Returns the `_feesCollector`.\"},\"maximumFee()\":{\"details\":\"Returns the `maximumFee`.\"},\"setFeesCollector(address)\":{\"details\":\"Sets contract fees collector to a new account (`newFeesCollector`).\"},\"setParams(uint256,uint256,uint256)\":{\"details\":\"Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`.\",\"return\":\"A bool value indicating whether the operation succeeded.\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol\":\"IERC20Fee\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol\":{\"keccak256\":\"0xb878718fda2238b85a9d31018a2b742ba202f318c257f7813a4bf4df9c8f3f7c\",\"urls\":[\"bzz-raw://601350b8039a34d299afc0a6c84cf1711b1eeb3938a42a9fb66fa582305fc276\",\"dweb:/ipfs/QmUKspVNuHUjdeTXDoGKyEhxALizApPV1zHqZEpDsouEWB\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_feesCollector\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"fee\",\"type\":\"uint256\"}],\"name\":\"Fee\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_feesCollector\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newFeesCollector\",\"type\":\"address\"}],\"name\":\"FeesCollector\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newBasisPoints\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newMinFee\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newMaxFee\",\"type\":\"uint256\"}],\"name\":\"Params\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newBasisPoints\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newMinFee\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newMaxFee\",\"type\":\"uint256\"}],\"name\":\"SpecialParams\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"basisPointsRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"calculateFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"denominator\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"fees\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"feesCollector\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"maximumFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minimumFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newFeesCollector\",\"type\":\"address\"}],\"name\":\"setFeesCollector\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newBasisPointsRate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMinimumFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMaximumFee\",\"type\":\"uint256\"}],\"name\":\"setParams\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"newBasisPoints\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMinFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMaxFee\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"state\",\"type\":\"bool\"}],\"name\":\"setSpecialParams\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface of the ERC20Fee standard.\",\"methods\":{\"basisPointsRate()\":{\"details\":\"Returns the `_basisPointsRate`\"},\"calculateFee(address,uint256)\":{\"details\":\"Calculates fee for a specific`account`\",\"params\":{\"account\":\"Sender account address\",\"amount\":\"Amount of tokens to send\"},\"return\":\"An uint256 value representing the account fee\"},\"denominator()\":{\"details\":\"Returns the `_denominator`\"},\"fees(address)\":{\"details\":\"Returns the special fees parameters for account\",\"params\":{\"account\":\"Account address\"},\"return\":\"A tuple of (uint256, uint256, uint256, bool) types\"},\"feesCollector()\":{\"details\":\"Returns the `_feesCollector`\"},\"maximumFee()\":{\"details\":\"Returns the `_maximumFee`\"},\"minimumFee()\":{\"details\":\"Returns the `_minimumFee`\"},\"setFeesCollector(address)\":{\"details\":\"Sets contract fees collector to a new account (`newFeesCollector`).\",\"params\":{\"newFeesCollector\":\"Account address of new fees collector\"},\"return\":\"A bool value indicating whether the operation succeeded\"},\"setParams(uint256,uint256,uint256)\":{\"details\":\"Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`\",\"params\":{\"newBasisPointsRate\":\"Value of basis rate\",\"newMaximumFee\":\"Value of maximum fee\",\"newMinimumFee\":\"Value of minimum fee\"},\"return\":\"A bool value indicating whether the operation succeeded\"},\"setSpecialParams(address,uint256,uint256,uint256,bool)\":{\"details\":\"Sets `basisPointsRate`, `minimumFee` and `maximumFee` for `account` in `_fees` mapping\",\"params\":{\"account\":\"Account address\",\"newBasisPoints\":\"Value for account basis rate\",\"newMaxFee\":\"Value of account maximum fee\",\"newMinFee\":\"Value of account minimum fee\",\"state\":\"Account special fees state (true/false)\"},\"return\":\"A bool value indicating whether the operation succeeded\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol\":\"IERC20Fee\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol\":{\"keccak256\":\"0x94d0bb53f8292fb4e8f934eaf8ec5499314d9a44c7b6d04c4768e1c643a3df70\",\"urls\":[\"bzz-raw://32c06ea915d3589f537c89457c4de64e5bd5414bbb70474fb2e3bf8b1aa76caa\",\"dweb:/ipfs/QmTjSThDPzD6fa2bzrM7SLPr52dW1CmHN8zP9VBZUByqoa\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.5.0;\n\n/**\n * @dev Interface of the ERC20Fee standard.\n */\ninterface IERC20Fee {\n    /**\n     * @dev Returns the `basisPointsRate`.\n     */\n    function basisPointsRate() external view returns (uint256);\n\n    /**\n     * @dev Returns the `maximumFee`.\n     */\n    function maximumFee() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_feesCollector`.\n     */\n    function feesCollector() external view returns (address);\n\n    /**\n     * @dev Sets contract fees collector to a new account (`newFeesCollector`).\n     */\n    function setFeesCollector(address newFeesCollector) external returns (bool);\n\n    /**\n     * @dev Calculates fee for account.\n     *\n     * @return An uint256 value representing the fee value.\n     */\n    function calculateFee(address account, uint256 amount)\n        external\n        returns (uint256);\n\n    /**\n     * @dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`.\n     *\n     * @return A bool value indicating whether the operation succeeded.\n     */\n    function setParams(\n        uint256 newBasisPointsRate,\n        uint256 newMinimumFee,\n        uint256 newMaximumFee\n    ) external returns (bool);\n\n    /**\n     * @dev Emitted when `_basisPointsRate` and `_maximumFee` parameters\n     * have been changed.\n     */\n    event Params(\n        uint256 indexed newBasisPointsRate,\n        uint256 indexed newMaximumFee\n    );\n\n    /**\n     * @dev Emitted when `basisPointsRate`, `maximumFee` and  `minimumFee`\n     * parameters for account have been changed.\n     */\n    event SpecialParams(\n        address indexed account,\n        uint256 indexed newBasisPointsRate,\n        uint256 newMaximumFee,\n        uint256 newMinimumFee\n    );\n\n    /**\n     * @dev Emitted when `value` fees are moved to fees collector.\n     */\n    event Fee(address indexed feesCollector, uint256 indexed fee);\n\n    /**\n     * @dev Emitted when `_feesCollector` parameter have been changed.\n     */\n    event FeesCollector(\n        address indexed feesCollector,\n        address indexed newFeesCollector\n    );\n}\n",
+  "source": "pragma solidity ^0.5.0;\n\n/**\n * @dev Interface of the ERC20Fee standard.\n */\ninterface IERC20Fee {\n    /**\n     * @dev Returns the `_basisPointsRate`\n     */\n    function basisPointsRate() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_minimumFee`\n     */\n    function minimumFee() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_maximumFee`\n     */\n    function maximumFee() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_denominator`\n     */\n    function denominator() external view returns (uint256);\n\n    /**\n     * @dev Returns the special fees parameters for account\n     * @param account Account address\n     * @return A tuple of (uint256, uint256, uint256, bool) types\n     */\n    function fees(address account)\n        external\n        view\n        returns (uint256, uint256, uint256, bool);\n\n    /**\n     * @dev Returns the `_feesCollector`\n     */\n    function feesCollector() external view returns (address);\n\n    /**\n     * @dev Sets contract fees collector to a new account (`newFeesCollector`).\n     * @param newFeesCollector Account address of new fees collector\n     * @return A bool value indicating whether the operation succeeded\n     */\n    function setFeesCollector(address newFeesCollector) external returns (bool);\n\n    /**\n     * @dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n     * @param newBasisPointsRate Value of basis rate\n     * @param newMinimumFee Value of minimum fee\n     * @param newMaximumFee Value of maximum fee\n     * @return A bool value indicating whether the operation succeeded\n     */\n    function setParams(\n        uint256 newBasisPointsRate,\n        uint256 newMinimumFee,\n        uint256 newMaximumFee\n    ) external returns (bool);\n\n    /**\n     * @dev Sets `basisPointsRate`, `minimumFee` and `maximumFee`\n     * for `account` in `_fees` mapping\n     * @param account Account address\n     * @param newBasisPoints Value for account basis rate\n     * @param newMinFee Value of account minimum fee\n     * @param newMaxFee Value of account maximum fee\n     * @param state Account special fees state (true/false)\n     * @return A bool value indicating whether the operation succeeded\n     */\n    function setSpecialParams(\n        address account,\n        uint256 newBasisPoints,\n        uint256 newMinFee,\n        uint256 newMaxFee,\n        bool state\n    ) external returns (bool);\n\n    /**\n     * @dev Calculates fee for a specific`account`\n     * @param account Sender account address\n     * @param amount Amount of tokens to send\n     * @return An uint256 value representing the account fee\n     */\n    function calculateFee(address account, uint256 amount)\n        external\n        returns (uint256);\n\n    /**\n     * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n     * parameters have been changed.\n     */\n    event Params(\n        uint256 indexed newBasisPoints,\n        uint256 indexed newMinFee,\n        uint256 indexed newMaxFee\n    );\n\n    /**\n     * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n     * parameters have been changed.\n     */\n    event SpecialParams(\n        address indexed account,\n        uint256 indexed newBasisPoints,\n        uint256 newMinFee,\n        uint256 newMaxFee\n    );\n\n    /**\n     * @dev Emitted when fees are moved to fees collector\n     */\n    event Fee(address indexed _feesCollector, uint256 indexed fee);\n\n    /**\n     * @dev Emitted when `_feesCollector` parameter have been changed\n     */\n    event FeesCollector(\n        address indexed _feesCollector,\n        address indexed newFeesCollector\n    );\n}\n",
   "sourcePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol",
   "ast": {
     "absolutePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol",
     "exportedSymbols": {
       "IERC20Fee": [
-        1383
+        1424
       ]
     },
-    "id": 1384,
+    "id": 1425,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1312,
+        "id": 1313,
         "literals": [
           "solidity",
           "^",
@@ -247,38 +360,38 @@
         "contractKind": "interface",
         "documentation": "@dev Interface of the ERC20Fee standard.",
         "fullyImplemented": false,
-        "id": 1383,
+        "id": 1424,
         "linearizedBaseContracts": [
-          1383
+          1424
         ],
         "name": "IERC20Fee",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": null,
-            "documentation": "@dev Returns the `basisPointsRate`.",
-            "id": 1317,
+            "documentation": "@dev Returns the `_basisPointsRate`",
+            "id": 1318,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "basisPointsRate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1313,
+              "id": 1314,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "186:2:7"
             },
             "returnParameters": {
-              "id": 1316,
+              "id": 1317,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1315,
+                  "id": 1316,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1317,
+                  "scope": 1318,
                   "src": "212:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -287,7 +400,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1314,
+                    "id": 1315,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "212:7:7",
@@ -302,7 +415,7 @@
               ],
               "src": "211:9:7"
             },
-            "scope": 1383,
+            "scope": 1424,
             "src": "162:59:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -310,29 +423,29 @@
           },
           {
             "body": null,
-            "documentation": "@dev Returns the `maximumFee`.",
-            "id": 1322,
+            "documentation": "@dev Returns the `_minimumFee`",
+            "id": 1323,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "maximumFee",
+            "name": "minimumFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1318,
+              "id": 1319,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "300:2:7"
             },
             "returnParameters": {
-              "id": 1321,
+              "id": 1322,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1320,
+                  "id": 1321,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1322,
+                  "scope": 1323,
                   "src": "326:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -341,7 +454,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1319,
+                    "id": 1320,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "326:7:7",
@@ -356,7 +469,7 @@
               ],
               "src": "325:9:7"
             },
-            "scope": 1383,
+            "scope": 1424,
             "src": "281:54:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -364,161 +477,132 @@
           },
           {
             "body": null,
-            "documentation": "@dev Returns the `_feesCollector`.",
-            "id": 1327,
+            "documentation": "@dev Returns the `_maximumFee`",
+            "id": 1328,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "feesCollector",
+            "name": "maximumFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1323,
+              "id": 1324,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "421:2:7"
+              "src": "414:2:7"
             },
             "returnParameters": {
-              "id": 1326,
+              "id": 1327,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1325,
+                  "id": 1326,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1327,
-                  "src": "447:7:7",
+                  "scope": 1328,
+                  "src": "440:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1324,
-                    "name": "address",
+                    "id": 1325,
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "447:7:7",
-                    "stateMutability": "nonpayable",
+                    "src": "440:7:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "446:9:7"
+              "src": "439:9:7"
             },
-            "scope": 1383,
-            "src": "399:57:7",
+            "scope": 1424,
+            "src": "395:54:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           },
           {
             "body": null,
-            "documentation": "@dev Sets contract fees collector to a new account (`newFeesCollector`).",
-            "id": 1334,
+            "documentation": "@dev Returns the `_denominator`",
+            "id": 1333,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "setFeesCollector",
+            "name": "denominator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1330,
+              "id": 1329,
               "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1329,
-                  "name": "newFeesCollector",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1334,
-                  "src": "584:24:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 1328,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "584:7:7",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "583:26:7"
+              "parameters": [],
+              "src": "530:2:7"
             },
             "returnParameters": {
-              "id": 1333,
+              "id": 1332,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1332,
+                  "id": 1331,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1334,
-                  "src": "628:4:7",
+                  "scope": 1333,
+                  "src": "556:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1331,
-                    "name": "bool",
+                    "id": 1330,
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "628:4:7",
+                    "src": "556:7:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "627:6:7"
+              "src": "555:9:7"
             },
-            "scope": 1383,
-            "src": "558:76:7",
-            "stateMutability": "nonpayable",
+            "scope": 1424,
+            "src": "510:55:7",
+            "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           },
           {
             "body": null,
-            "documentation": "@dev Calculates fee for account.\n     * @return An uint256 value representing the fee value.",
-            "id": 1343,
+            "documentation": "@dev Returns the special fees parameters for account\n@param account Account address\n@return A tuple of (uint256, uint256, uint256, bool) types",
+            "id": 1346,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "calculateFee",
+            "name": "fees",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1339,
+              "id": 1336,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1336,
+                  "id": 1335,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
-                  "src": "785:15:7",
+                  "scope": 1346,
+                  "src": "765:15:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -526,10 +610,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1335,
+                    "id": 1334,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "785:7:7",
+                    "src": "765:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -538,14 +622,21 @@
                   },
                   "value": null,
                   "visibility": "internal"
-                },
+                }
+              ],
+              "src": "764:17:7"
+            },
+            "returnParameters": {
+              "id": 1345,
+              "nodeType": "ParameterList",
+              "parameters": [
                 {
                   "constant": false,
                   "id": 1338,
-                  "name": "amount",
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
-                  "src": "802:14:7",
+                  "scope": 1346,
+                  "src": "829:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -556,88 +647,7 @@
                     "id": 1337,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "802:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "784:33:7"
-            },
-            "returnParameters": {
-              "id": 1342,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1341,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1343,
-                  "src": "852:7:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1340,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "852:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "851:9:7"
-            },
-            "scope": 1383,
-            "src": "763:98:7",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": "@dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`.\n     * @return A bool value indicating whether the operation succeeded.",
-            "id": 1354,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "setParams",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1350,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1345,
-                  "name": "newBasisPointsRate",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1354,
-                  "src": "1060:26:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1344,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1060:7:7",
+                    "src": "829:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -648,11 +658,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1347,
-                  "name": "newMinimumFee",
+                  "id": 1340,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
-                  "src": "1096:21:7",
+                  "scope": 1346,
+                  "src": "838:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -660,10 +670,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1346,
+                    "id": 1339,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1096:7:7",
+                    "src": "838:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -674,11 +684,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1349,
-                  "name": "newMaximumFee",
+                  "id": 1342,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
-                  "src": "1127:21:7",
+                  "scope": 1346,
+                  "src": "847:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -686,10 +696,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1348,
+                    "id": 1341,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1127:7:7",
+                    "src": "847:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -697,21 +707,14 @@
                   },
                   "value": null,
                   "visibility": "internal"
-                }
-              ],
-              "src": "1050:104:7"
-            },
-            "returnParameters": {
-              "id": 1353,
-              "nodeType": "ParameterList",
-              "parameters": [
+                },
                 {
                   "constant": false,
-                  "id": 1352,
+                  "id": 1344,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
-                  "src": "1173:4:7",
+                  "scope": 1346,
+                  "src": "856:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -719,10 +722,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1351,
+                    "id": 1343,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1173:4:7",
+                    "src": "856:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -732,101 +735,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1172:6:7"
+              "src": "828:33:7"
             },
-            "scope": 1383,
-            "src": "1032:147:7",
-            "stateMutability": "nonpayable",
+            "scope": 1424,
+            "src": "751:111:7",
+            "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           },
           {
-            "anonymous": false,
-            "documentation": "@dev Emitted when `_basisPointsRate` and `_maximumFee` parameters\nhave been changed.",
-            "id": 1360,
-            "name": "Params",
-            "nodeType": "EventDefinition",
+            "body": null,
+            "documentation": "@dev Returns the `_feesCollector`",
+            "id": 1351,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "feesCollector",
+            "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1359,
+              "id": 1347,
               "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1356,
-                  "indexed": true,
-                  "name": "newBasisPointsRate",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1360,
-                  "src": "1322:34:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1355,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1322:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1358,
-                  "indexed": true,
-                  "name": "newMaximumFee",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1360,
-                  "src": "1366:29:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1357,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1366:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1312:89:7"
+              "parameters": [],
+              "src": "947:2:7"
             },
-            "src": "1300:102:7"
-          },
-          {
-            "anonymous": false,
-            "documentation": "@dev Emitted when `basisPointsRate`, `maximumFee` and  `minimumFee`\nparameters for account have been changed.",
-            "id": 1370,
-            "name": "SpecialParams",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 1369,
+            "returnParameters": {
+              "id": 1350,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1362,
-                  "indexed": true,
-                  "name": "account",
+                  "id": 1349,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1370,
-                  "src": "1577:23:7",
+                  "scope": 1351,
+                  "src": "973:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -834,10 +776,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1361,
+                    "id": 1348,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1577:7:7",
+                    "src": "973:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -846,15 +788,170 @@
                   },
                   "value": null,
                   "visibility": "internal"
+                }
+              ],
+              "src": "972:9:7"
+            },
+            "scope": 1424,
+            "src": "925:57:7",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets contract fees collector to a new account (`newFeesCollector`).\n@param newFeesCollector Account address of new fees collector\n@return A bool value indicating whether the operation succeeded",
+            "id": 1358,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setFeesCollector",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1354,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1353,
+                  "name": "newFeesCollector",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1358,
+                  "src": "1250:24:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1352,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1250:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1249:26:7"
+            },
+            "returnParameters": {
+              "id": 1357,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1356,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1358,
+                  "src": "1294:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1355,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1294:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1293:6:7"
+            },
+            "scope": 1424,
+            "src": "1224:76:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n@param newBasisPointsRate Value of basis rate\n@param newMinimumFee Value of minimum fee\n@param newMaximumFee Value of maximum fee\n@return A bool value indicating whether the operation succeeded",
+            "id": 1369,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setParams",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1365,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1360,
+                  "name": "newBasisPointsRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1369,
+                  "src": "1641:26:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1359,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1641:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1362,
+                  "name": "newMinimumFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1369,
+                  "src": "1677:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1361,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1677:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
                 },
                 {
                   "constant": false,
                   "id": 1364,
-                  "indexed": true,
-                  "name": "newBasisPointsRate",
+                  "name": "newMaximumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1370,
-                  "src": "1610:34:7",
+                  "scope": 1369,
+                  "src": "1708:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -865,61 +962,7 @@
                     "id": 1363,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1610:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1366,
-                  "indexed": false,
-                  "name": "newMaximumFee",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1370,
-                  "src": "1654:21:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1365,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1654:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1368,
-                  "indexed": false,
-                  "name": "newMinimumFee",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1370,
-                  "src": "1685:21:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1367,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1685:7:7",
+                    "src": "1708:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -929,28 +972,579 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1567:145:7"
+              "src": "1631:104:7"
             },
-            "src": "1548:165:7"
+            "returnParameters": {
+              "id": 1368,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1367,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1369,
+                  "src": "1754:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1366,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1754:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1753:6:7"
+            },
+            "scope": 1424,
+            "src": "1613:147:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets `basisPointsRate`, `minimumFee` and `maximumFee`\nfor `account` in `_fees` mapping\n@param account Account address\n@param newBasisPoints Value for account basis rate\n@param newMinFee Value of account minimum fee\n@param newMaxFee Value of account maximum fee\n@param state Account special fees state (true/false)\n@return A bool value indicating whether the operation succeeded",
+            "id": 1384,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setSpecialParams",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1380,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1371,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2256:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1370,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2256:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1373,
+                  "name": "newBasisPoints",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2281:22:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1372,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2281:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1375,
+                  "name": "newMinFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2313:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1374,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2313:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1377,
+                  "name": "newMaxFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2340:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1376,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2340:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1379,
+                  "name": "state",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2367:10:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1378,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2367:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2246:137:7"
+            },
+            "returnParameters": {
+              "id": 1383,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1382,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2402:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1381,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2402:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2401:6:7"
+            },
+            "scope": 1424,
+            "src": "2221:187:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Calculates fee for a specific`account`\n@param account Sender account address\n@param amount Amount of tokens to send\n@return An uint256 value representing the account fee",
+            "id": 1393,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "calculateFee",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1389,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1386,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1393,
+                  "src": "2655:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1385,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2655:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1388,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1393,
+                  "src": "2672:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1387,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2672:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2654:33:7"
+            },
+            "returnParameters": {
+              "id": 1392,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1391,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1393,
+                  "src": "2722:7:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1390,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2722:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2721:9:7"
+            },
+            "scope": 1424,
+            "src": "2633:98:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when `value` fees are moved to fees collector.",
-            "id": 1376,
+            "documentation": "@dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\nparameters have been changed.",
+            "id": 1401,
+            "name": "Params",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1400,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1395,
+                  "indexed": true,
+                  "name": "newBasisPoints",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1401,
+                  "src": "2889:30:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1394,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2889:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1397,
+                  "indexed": true,
+                  "name": "newMinFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1401,
+                  "src": "2929:25:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1396,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2929:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1399,
+                  "indexed": true,
+                  "name": "newMaxFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1401,
+                  "src": "2964:25:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1398,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2964:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2879:116:7"
+            },
+            "src": "2867:129:7"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\nparameters have been changed.",
+            "id": 1411,
+            "name": "SpecialParams",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1410,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1403,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "3161:23:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1402,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3161:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1405,
+                  "indexed": true,
+                  "name": "newBasisPoints",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "3194:30:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1404,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3194:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1407,
+                  "indexed": false,
+                  "name": "newMinFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "3234:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1406,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3234:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1409,
+                  "indexed": false,
+                  "name": "newMaxFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "3261:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1408,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3261:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3151:133:7"
+            },
+            "src": "3132:153:7"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Emitted when fees are moved to fees collector",
+            "id": 1417,
             "name": "Fee",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1375,
+              "id": 1416,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1372,
+                  "id": 1413,
                   "indexed": true,
-                  "name": "feesCollector",
+                  "name": "_feesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1376,
-                  "src": "1812:29:7",
+                  "scope": 1417,
+                  "src": "3375:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -958,10 +1552,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1371,
+                    "id": 1412,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1812:7:7",
+                    "src": "3375:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -973,12 +1567,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1374,
+                  "id": 1415,
                   "indexed": true,
                   "name": "fee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1376,
-                  "src": "1843:19:7",
+                  "scope": 1417,
+                  "src": "3407:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -986,10 +1580,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1373,
+                    "id": 1414,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1843:7:7",
+                    "src": "3407:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -999,28 +1593,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1811:52:7"
+              "src": "3374:53:7"
             },
-            "src": "1802:62:7"
+            "src": "3365:63:7"
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when `_feesCollector` parameter have been changed.",
-            "id": 1382,
+            "documentation": "@dev Emitted when `_feesCollector` parameter have been changed",
+            "id": 1423,
             "name": "FeesCollector",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1381,
+              "id": 1422,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1378,
+                  "id": 1419,
                   "indexed": true,
-                  "name": "feesCollector",
+                  "name": "_feesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1382,
-                  "src": "1986:29:7",
+                  "scope": 1423,
+                  "src": "3549:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1028,10 +1622,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1377,
+                    "id": 1418,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1986:7:7",
+                    "src": "3549:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1043,12 +1637,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1380,
+                  "id": 1421,
                   "indexed": true,
                   "name": "newFeesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1382,
-                  "src": "2025:32:7",
+                  "scope": 1423,
+                  "src": "3589:32:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1056,10 +1650,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1379,
+                    "id": 1420,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2025:7:7",
+                    "src": "3589:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1070,29 +1664,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1976:87:7"
+              "src": "3539:88:7"
             },
-            "src": "1957:107:7"
+            "src": "3520:108:7"
           }
         ],
-        "scope": 1384,
-        "src": "77:1989:7"
+        "scope": 1425,
+        "src": "77:3553:7"
       }
     ],
-    "src": "0:2067:7"
+    "src": "0:3631:7"
   },
   "legacyAST": {
     "absolutePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol",
     "exportedSymbols": {
       "IERC20Fee": [
-        1383
+        1424
       ]
     },
-    "id": 1384,
+    "id": 1425,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1312,
+        "id": 1313,
         "literals": [
           "solidity",
           "^",
@@ -1108,38 +1702,38 @@
         "contractKind": "interface",
         "documentation": "@dev Interface of the ERC20Fee standard.",
         "fullyImplemented": false,
-        "id": 1383,
+        "id": 1424,
         "linearizedBaseContracts": [
-          1383
+          1424
         ],
         "name": "IERC20Fee",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": null,
-            "documentation": "@dev Returns the `basisPointsRate`.",
-            "id": 1317,
+            "documentation": "@dev Returns the `_basisPointsRate`",
+            "id": 1318,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "basisPointsRate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1313,
+              "id": 1314,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "186:2:7"
             },
             "returnParameters": {
-              "id": 1316,
+              "id": 1317,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1315,
+                  "id": 1316,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1317,
+                  "scope": 1318,
                   "src": "212:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1148,7 +1742,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1314,
+                    "id": 1315,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "212:7:7",
@@ -1163,7 +1757,7 @@
               ],
               "src": "211:9:7"
             },
-            "scope": 1383,
+            "scope": 1424,
             "src": "162:59:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -1171,29 +1765,29 @@
           },
           {
             "body": null,
-            "documentation": "@dev Returns the `maximumFee`.",
-            "id": 1322,
+            "documentation": "@dev Returns the `_minimumFee`",
+            "id": 1323,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "maximumFee",
+            "name": "minimumFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1318,
+              "id": 1319,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "300:2:7"
             },
             "returnParameters": {
-              "id": 1321,
+              "id": 1322,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1320,
+                  "id": 1321,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1322,
+                  "scope": 1323,
                   "src": "326:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1202,7 +1796,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1319,
+                    "id": 1320,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "326:7:7",
@@ -1217,7 +1811,7 @@
               ],
               "src": "325:9:7"
             },
-            "scope": 1383,
+            "scope": 1424,
             "src": "281:54:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -1225,161 +1819,132 @@
           },
           {
             "body": null,
-            "documentation": "@dev Returns the `_feesCollector`.",
-            "id": 1327,
+            "documentation": "@dev Returns the `_maximumFee`",
+            "id": 1328,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "feesCollector",
+            "name": "maximumFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1323,
+              "id": 1324,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "421:2:7"
+              "src": "414:2:7"
             },
             "returnParameters": {
-              "id": 1326,
+              "id": 1327,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1325,
+                  "id": 1326,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1327,
-                  "src": "447:7:7",
+                  "scope": 1328,
+                  "src": "440:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1324,
-                    "name": "address",
+                    "id": 1325,
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "447:7:7",
-                    "stateMutability": "nonpayable",
+                    "src": "440:7:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "446:9:7"
+              "src": "439:9:7"
             },
-            "scope": 1383,
-            "src": "399:57:7",
+            "scope": 1424,
+            "src": "395:54:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           },
           {
             "body": null,
-            "documentation": "@dev Sets contract fees collector to a new account (`newFeesCollector`).",
-            "id": 1334,
+            "documentation": "@dev Returns the `_denominator`",
+            "id": 1333,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "setFeesCollector",
+            "name": "denominator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1330,
+              "id": 1329,
               "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1329,
-                  "name": "newFeesCollector",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1334,
-                  "src": "584:24:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 1328,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "584:7:7",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "583:26:7"
+              "parameters": [],
+              "src": "530:2:7"
             },
             "returnParameters": {
-              "id": 1333,
+              "id": 1332,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1332,
+                  "id": 1331,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1334,
-                  "src": "628:4:7",
+                  "scope": 1333,
+                  "src": "556:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1331,
-                    "name": "bool",
+                    "id": 1330,
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "628:4:7",
+                    "src": "556:7:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "627:6:7"
+              "src": "555:9:7"
             },
-            "scope": 1383,
-            "src": "558:76:7",
-            "stateMutability": "nonpayable",
+            "scope": 1424,
+            "src": "510:55:7",
+            "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           },
           {
             "body": null,
-            "documentation": "@dev Calculates fee for account.\n     * @return An uint256 value representing the fee value.",
-            "id": 1343,
+            "documentation": "@dev Returns the special fees parameters for account\n@param account Account address\n@return A tuple of (uint256, uint256, uint256, bool) types",
+            "id": 1346,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "calculateFee",
+            "name": "fees",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1339,
+              "id": 1336,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1336,
+                  "id": 1335,
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
-                  "src": "785:15:7",
+                  "scope": 1346,
+                  "src": "765:15:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1387,10 +1952,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1335,
+                    "id": 1334,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "785:7:7",
+                    "src": "765:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1399,14 +1964,21 @@
                   },
                   "value": null,
                   "visibility": "internal"
-                },
+                }
+              ],
+              "src": "764:17:7"
+            },
+            "returnParameters": {
+              "id": 1345,
+              "nodeType": "ParameterList",
+              "parameters": [
                 {
                   "constant": false,
                   "id": 1338,
-                  "name": "amount",
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
-                  "src": "802:14:7",
+                  "scope": 1346,
+                  "src": "829:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1417,88 +1989,7 @@
                     "id": 1337,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "802:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "784:33:7"
-            },
-            "returnParameters": {
-              "id": 1342,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1341,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1343,
-                  "src": "852:7:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1340,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "852:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "851:9:7"
-            },
-            "scope": 1383,
-            "src": "763:98:7",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": "@dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`.\n     * @return A bool value indicating whether the operation succeeded.",
-            "id": 1354,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "setParams",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1350,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1345,
-                  "name": "newBasisPointsRate",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1354,
-                  "src": "1060:26:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1344,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1060:7:7",
+                    "src": "829:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1509,11 +2000,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1347,
-                  "name": "newMinimumFee",
+                  "id": 1340,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
-                  "src": "1096:21:7",
+                  "scope": 1346,
+                  "src": "838:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1521,10 +2012,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1346,
+                    "id": 1339,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1096:7:7",
+                    "src": "838:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1535,11 +2026,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1349,
-                  "name": "newMaximumFee",
+                  "id": 1342,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
-                  "src": "1127:21:7",
+                  "scope": 1346,
+                  "src": "847:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1547,10 +2038,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1348,
+                    "id": 1341,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1127:7:7",
+                    "src": "847:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1558,21 +2049,14 @@
                   },
                   "value": null,
                   "visibility": "internal"
-                }
-              ],
-              "src": "1050:104:7"
-            },
-            "returnParameters": {
-              "id": 1353,
-              "nodeType": "ParameterList",
-              "parameters": [
+                },
                 {
                   "constant": false,
-                  "id": 1352,
+                  "id": 1344,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
-                  "src": "1173:4:7",
+                  "scope": 1346,
+                  "src": "856:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1580,10 +2064,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1351,
+                    "id": 1343,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1173:4:7",
+                    "src": "856:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1593,101 +2077,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1172:6:7"
+              "src": "828:33:7"
             },
-            "scope": 1383,
-            "src": "1032:147:7",
-            "stateMutability": "nonpayable",
+            "scope": 1424,
+            "src": "751:111:7",
+            "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           },
           {
-            "anonymous": false,
-            "documentation": "@dev Emitted when `_basisPointsRate` and `_maximumFee` parameters\nhave been changed.",
-            "id": 1360,
-            "name": "Params",
-            "nodeType": "EventDefinition",
+            "body": null,
+            "documentation": "@dev Returns the `_feesCollector`",
+            "id": 1351,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "feesCollector",
+            "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1359,
+              "id": 1347,
               "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1356,
-                  "indexed": true,
-                  "name": "newBasisPointsRate",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1360,
-                  "src": "1322:34:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1355,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1322:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1358,
-                  "indexed": true,
-                  "name": "newMaximumFee",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1360,
-                  "src": "1366:29:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1357,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1366:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1312:89:7"
+              "parameters": [],
+              "src": "947:2:7"
             },
-            "src": "1300:102:7"
-          },
-          {
-            "anonymous": false,
-            "documentation": "@dev Emitted when `basisPointsRate`, `maximumFee` and  `minimumFee`\nparameters for account have been changed.",
-            "id": 1370,
-            "name": "SpecialParams",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 1369,
+            "returnParameters": {
+              "id": 1350,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1362,
-                  "indexed": true,
-                  "name": "account",
+                  "id": 1349,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1370,
-                  "src": "1577:23:7",
+                  "scope": 1351,
+                  "src": "973:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1695,10 +2118,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1361,
+                    "id": 1348,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1577:7:7",
+                    "src": "973:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1707,15 +2130,170 @@
                   },
                   "value": null,
                   "visibility": "internal"
+                }
+              ],
+              "src": "972:9:7"
+            },
+            "scope": 1424,
+            "src": "925:57:7",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets contract fees collector to a new account (`newFeesCollector`).\n@param newFeesCollector Account address of new fees collector\n@return A bool value indicating whether the operation succeeded",
+            "id": 1358,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setFeesCollector",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1354,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1353,
+                  "name": "newFeesCollector",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1358,
+                  "src": "1250:24:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1352,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1250:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1249:26:7"
+            },
+            "returnParameters": {
+              "id": 1357,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1356,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1358,
+                  "src": "1294:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1355,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1294:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1293:6:7"
+            },
+            "scope": 1424,
+            "src": "1224:76:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n@param newBasisPointsRate Value of basis rate\n@param newMinimumFee Value of minimum fee\n@param newMaximumFee Value of maximum fee\n@return A bool value indicating whether the operation succeeded",
+            "id": 1369,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setParams",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1365,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1360,
+                  "name": "newBasisPointsRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1369,
+                  "src": "1641:26:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1359,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1641:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1362,
+                  "name": "newMinimumFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1369,
+                  "src": "1677:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1361,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1677:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
                 },
                 {
                   "constant": false,
                   "id": 1364,
-                  "indexed": true,
-                  "name": "newBasisPointsRate",
+                  "name": "newMaximumFee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1370,
-                  "src": "1610:34:7",
+                  "scope": 1369,
+                  "src": "1708:21:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1726,61 +2304,7 @@
                     "id": 1363,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1610:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1366,
-                  "indexed": false,
-                  "name": "newMaximumFee",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1370,
-                  "src": "1654:21:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1365,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1654:7:7",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1368,
-                  "indexed": false,
-                  "name": "newMinimumFee",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1370,
-                  "src": "1685:21:7",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1367,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1685:7:7",
+                    "src": "1708:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1790,28 +2314,579 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1567:145:7"
+              "src": "1631:104:7"
             },
-            "src": "1548:165:7"
+            "returnParameters": {
+              "id": 1368,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1367,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1369,
+                  "src": "1754:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1366,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1754:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1753:6:7"
+            },
+            "scope": 1424,
+            "src": "1613:147:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets `basisPointsRate`, `minimumFee` and `maximumFee`\nfor `account` in `_fees` mapping\n@param account Account address\n@param newBasisPoints Value for account basis rate\n@param newMinFee Value of account minimum fee\n@param newMaxFee Value of account maximum fee\n@param state Account special fees state (true/false)\n@return A bool value indicating whether the operation succeeded",
+            "id": 1384,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setSpecialParams",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1380,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1371,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2256:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1370,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2256:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1373,
+                  "name": "newBasisPoints",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2281:22:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1372,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2281:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1375,
+                  "name": "newMinFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2313:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1374,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2313:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1377,
+                  "name": "newMaxFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2340:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1376,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2340:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1379,
+                  "name": "state",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2367:10:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1378,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2367:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2246:137:7"
+            },
+            "returnParameters": {
+              "id": 1383,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1382,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1384,
+                  "src": "2402:4:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1381,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2402:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2401:6:7"
+            },
+            "scope": 1424,
+            "src": "2221:187:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Calculates fee for a specific`account`\n@param account Sender account address\n@param amount Amount of tokens to send\n@return An uint256 value representing the account fee",
+            "id": 1393,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "calculateFee",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1389,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1386,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1393,
+                  "src": "2655:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1385,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2655:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1388,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1393,
+                  "src": "2672:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1387,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2672:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2654:33:7"
+            },
+            "returnParameters": {
+              "id": 1392,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1391,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1393,
+                  "src": "2722:7:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1390,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2722:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2721:9:7"
+            },
+            "scope": 1424,
+            "src": "2633:98:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when `value` fees are moved to fees collector.",
-            "id": 1376,
+            "documentation": "@dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\nparameters have been changed.",
+            "id": 1401,
+            "name": "Params",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1400,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1395,
+                  "indexed": true,
+                  "name": "newBasisPoints",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1401,
+                  "src": "2889:30:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1394,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2889:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1397,
+                  "indexed": true,
+                  "name": "newMinFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1401,
+                  "src": "2929:25:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1396,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2929:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1399,
+                  "indexed": true,
+                  "name": "newMaxFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1401,
+                  "src": "2964:25:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1398,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2964:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2879:116:7"
+            },
+            "src": "2867:129:7"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\nparameters have been changed.",
+            "id": 1411,
+            "name": "SpecialParams",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1410,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1403,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "3161:23:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1402,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3161:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1405,
+                  "indexed": true,
+                  "name": "newBasisPoints",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "3194:30:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1404,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3194:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1407,
+                  "indexed": false,
+                  "name": "newMinFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "3234:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1406,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3234:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1409,
+                  "indexed": false,
+                  "name": "newMaxFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "3261:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1408,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3261:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3151:133:7"
+            },
+            "src": "3132:153:7"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Emitted when fees are moved to fees collector",
+            "id": 1417,
             "name": "Fee",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1375,
+              "id": 1416,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1372,
+                  "id": 1413,
                   "indexed": true,
-                  "name": "feesCollector",
+                  "name": "_feesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1376,
-                  "src": "1812:29:7",
+                  "scope": 1417,
+                  "src": "3375:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1819,10 +2894,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1371,
+                    "id": 1412,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1812:7:7",
+                    "src": "3375:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1834,12 +2909,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1374,
+                  "id": 1415,
                   "indexed": true,
                   "name": "fee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1376,
-                  "src": "1843:19:7",
+                  "scope": 1417,
+                  "src": "3407:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1847,10 +2922,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1373,
+                    "id": 1414,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1843:7:7",
+                    "src": "3407:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1860,28 +2935,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1811:52:7"
+              "src": "3374:53:7"
             },
-            "src": "1802:62:7"
+            "src": "3365:63:7"
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when `_feesCollector` parameter have been changed.",
-            "id": 1382,
+            "documentation": "@dev Emitted when `_feesCollector` parameter have been changed",
+            "id": 1423,
             "name": "FeesCollector",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1381,
+              "id": 1422,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1378,
+                  "id": 1419,
                   "indexed": true,
-                  "name": "feesCollector",
+                  "name": "_feesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1382,
-                  "src": "1986:29:7",
+                  "scope": 1423,
+                  "src": "3549:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1889,10 +2964,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1377,
+                    "id": 1418,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1986:7:7",
+                    "src": "3549:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1904,12 +2979,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1380,
+                  "id": 1421,
                   "indexed": true,
                   "name": "newFeesCollector",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1382,
-                  "src": "2025:32:7",
+                  "scope": 1423,
+                  "src": "3589:32:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1917,10 +2992,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1379,
+                    "id": 1420,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2025:7:7",
+                    "src": "3589:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1931,16 +3006,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1976:87:7"
+              "src": "3539:88:7"
             },
-            "src": "1957:107:7"
+            "src": "3520:108:7"
           }
         ],
-        "scope": 1384,
-        "src": "77:1989:7"
+        "scope": 1425,
+        "src": "77:3553:7"
       }
     ],
-    "src": "0:2067:7"
+    "src": "0:3631:7"
   },
   "compiler": {
     "name": "solc",
@@ -1948,29 +3023,66 @@
   },
   "networks": {},
   "schemaVersion": "3.0.13",
-  "updatedAt": "2020-02-15T16:28:44.224Z",
+  "updatedAt": "2020-02-16T14:49:27.434Z",
   "devdoc": {
     "details": "Interface of the ERC20Fee standard.",
     "methods": {
       "basisPointsRate()": {
-        "details": "Returns the `basisPointsRate`."
+        "details": "Returns the `_basisPointsRate`"
       },
       "calculateFee(address,uint256)": {
-        "details": "Calculates fee for account.",
-        "return": "An uint256 value representing the fee value."
+        "details": "Calculates fee for a specific`account`",
+        "params": {
+          "account": "Sender account address",
+          "amount": "Amount of tokens to send"
+        },
+        "return": "An uint256 value representing the account fee"
+      },
+      "denominator()": {
+        "details": "Returns the `_denominator`"
+      },
+      "fees(address)": {
+        "details": "Returns the special fees parameters for account",
+        "params": {
+          "account": "Account address"
+        },
+        "return": "A tuple of (uint256, uint256, uint256, bool) types"
       },
       "feesCollector()": {
-        "details": "Returns the `_feesCollector`."
+        "details": "Returns the `_feesCollector`"
       },
       "maximumFee()": {
-        "details": "Returns the `maximumFee`."
+        "details": "Returns the `_maximumFee`"
+      },
+      "minimumFee()": {
+        "details": "Returns the `_minimumFee`"
       },
       "setFeesCollector(address)": {
-        "details": "Sets contract fees collector to a new account (`newFeesCollector`)."
+        "details": "Sets contract fees collector to a new account (`newFeesCollector`).",
+        "params": {
+          "newFeesCollector": "Account address of new fees collector"
+        },
+        "return": "A bool value indicating whether the operation succeeded"
       },
       "setParams(uint256,uint256,uint256)": {
-        "details": "Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`.",
-        "return": "A bool value indicating whether the operation succeeded."
+        "details": "Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`",
+        "params": {
+          "newBasisPointsRate": "Value of basis rate",
+          "newMaximumFee": "Value of maximum fee",
+          "newMinimumFee": "Value of minimum fee"
+        },
+        "return": "A bool value indicating whether the operation succeeded"
+      },
+      "setSpecialParams(address,uint256,uint256,uint256,bool)": {
+        "details": "Sets `basisPointsRate`, `minimumFee` and `maximumFee` for `account` in `_fees` mapping",
+        "params": {
+          "account": "Account address",
+          "newBasisPoints": "Value for account basis rate",
+          "newMaxFee": "Value of account maximum fee",
+          "newMinFee": "Value of account minimum fee",
+          "state": "Account special fees state (true/false)"
+        },
+        "return": "A bool value indicating whether the operation succeeded"
       }
     }
   },

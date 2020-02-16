@@ -54,7 +54,6 @@ pragma solidity ^0.5.0;
  * manner, since when dealing with GSN meta-transactions the account sending and
  * paying for execution may not be the actual sender (as far as an application
  * is concerned).
- *
  * This contract is only required for intermediate, library-like contracts.
  */
 contract Context {
@@ -82,13 +81,11 @@ pragma solidity ^0.5.0;
 /**
  * @dev Wrappers over Solidity's arithmetic operations with added overflow
  * checks.
- *
  * Arithmetic operations in Solidity wrap on overflow. This can easily result
  * in bugs, because programmers usually assume that an overflow raises an
  * error, which is the standard behavior in high level programming languages.
  * `SafeMath` restores this intuition by reverting the transaction when an
  * operation overflows.
- *
  * Using this library instead of the unchecked operations eliminates an entire
  * class of bugs, so it's recommended to use it always.
  */
@@ -96,9 +93,7 @@ library SafeMath {
     /**
      * @dev Returns the addition of two unsigned integers, reverting on
      * overflow.
-     *
      * Counterpart to Solidity's `+` operator.
-     *
      * Requirements:
      * - Addition cannot overflow.
      */
@@ -112,9 +107,7 @@ library SafeMath {
     /**
      * @dev Returns the subtraction of two unsigned integers, reverting on
      * overflow (when the result is negative).
-     *
      * Counterpart to Solidity's `-` operator.
-     *
      * Requirements:
      * - Subtraction cannot overflow.
      */
@@ -125,12 +118,9 @@ library SafeMath {
     /**
      * @dev Returns the subtraction of two unsigned integers, reverting with custom message on
      * overflow (when the result is negative).
-     *
      * Counterpart to Solidity's `-` operator.
-     *
      * Requirements:
      * - Subtraction cannot overflow.
-     *
      * _Available since v2.4.0._
      */
     function sub(uint256 a, uint256 b, string memory errorMessage)
@@ -147,9 +137,7 @@ library SafeMath {
     /**
      * @dev Returns the multiplication of two unsigned integers, reverting on
      * overflow.
-     *
      * Counterpart to Solidity's `*` operator.
-     *
      * Requirements:
      * - Multiplication cannot overflow.
      */
@@ -170,11 +158,9 @@ library SafeMath {
     /**
      * @dev Returns the integer division of two unsigned integers. Reverts on
      * division by zero. The result is rounded towards zero.
-     *
      * Counterpart to Solidity's `/` operator. Note: this function uses a
      * `revert` opcode (which leaves remaining gas untouched) while Solidity
      * uses an invalid opcode to revert (consuming all remaining gas).
-     *
      * Requirements:
      * - The divisor cannot be zero.
      */
@@ -185,14 +171,11 @@ library SafeMath {
     /**
      * @dev Returns the integer division of two unsigned integers. Reverts with custom message on
      * division by zero. The result is rounded towards zero.
-     *
      * Counterpart to Solidity's `/` operator. Note: this function uses a
      * `revert` opcode (which leaves remaining gas untouched) while Solidity
      * uses an invalid opcode to revert (consuming all remaining gas).
-     *
      * Requirements:
      * - The divisor cannot be zero.
-     *
      * _Available since v2.4.0._
      */
     function div(uint256 a, uint256 b, string memory errorMessage)
@@ -211,11 +194,9 @@ library SafeMath {
     /**
      * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),
      * Reverts when dividing by zero.
-     *
      * Counterpart to Solidity's `%` operator. This function uses a `revert`
      * opcode (which leaves remaining gas untouched) while Solidity uses an
      * invalid opcode to revert (consuming all remaining gas).
-     *
      * Requirements:
      * - The divisor cannot be zero.
      */
@@ -226,14 +207,11 @@ library SafeMath {
     /**
      * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),
      * Reverts with custom message when dividing by zero.
-     *
      * Counterpart to Solidity's `%` operator. This function uses a `revert`
      * opcode (which leaves remaining gas untouched) while Solidity uses an
      * invalid opcode to revert (consuming all remaining gas).
-     *
      * Requirements:
      * - The divisor cannot be zero.
-     *
      * _Available since v2.4.0._
      */
     function mod(uint256 a, uint256 b, string memory errorMessage)
@@ -354,9 +332,7 @@ interface IERC20 {
 
     /**
      * @dev Moves `amount` tokens from the caller's account to `recipient`.
-     *
      * Returns a boolean value indicating whether the operation succeeded.
-     *
      * Emits a {Transfer} event.
      */
     function transfer(address recipient, uint256 amount)
@@ -367,7 +343,6 @@ interface IERC20 {
      * @dev Returns the remaining number of tokens that `spender` will be
      * allowed to spend on behalf of `owner` through {transferFrom}. This is
      * zero by default.
-     *
      * This value changes when {approve} or {transferFrom} are called.
      */
     function allowance(address owner, address spender)
@@ -377,16 +352,13 @@ interface IERC20 {
 
     /**
      * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
-     *
      * Returns a boolean value indicating whether the operation succeeded.
-     *
      * IMPORTANT: Beware that changing an allowance with this method brings the risk
      * that someone may use both the old and the new allowance by unfortunate
      * transaction ordering. One possible solution to mitigate this race
      * condition is to first reduce the spender's allowance to 0 and set the
      * desired value afterwards:
      * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
-     *
      * Emits an {Approval} event.
      */
     function approve(address spender, uint256 amount) external returns (bool);
@@ -395,9 +367,7 @@ interface IERC20 {
      * @dev Moves `amount` tokens from `sender` to `recipient` using the
      * allowance mechanism. `amount` is then deducted from the caller's
      * allowance.
-     *
      * Returns a boolean value indicating whether the operation succeeded.
-     *
      * Emits a {Transfer} event.
      */
     function transferFrom(address sender, address recipient, uint256 amount)
@@ -407,7 +377,6 @@ interface IERC20 {
     /**
      * @dev Emitted when `value` tokens are moved from one account (`from`) to
      * another (`to`).
-     *
      * Note that `value` may be zero.
      */
     event Transfer(address indexed from, address indexed to, uint256 value);
@@ -433,38 +402,53 @@ pragma solidity ^0.5.0;
  */
 interface IERC20Fee {
     /**
-     * @dev Returns the `basisPointsRate`.
+     * @dev Returns the `_basisPointsRate`
      */
     function basisPointsRate() external view returns (uint256);
 
     /**
-     * @dev Returns the `maximumFee`.
+     * @dev Returns the `_minimumFee`
+     */
+    function minimumFee() external view returns (uint256);
+
+    /**
+     * @dev Returns the `_maximumFee`
      */
     function maximumFee() external view returns (uint256);
 
     /**
-     * @dev Returns the `_feesCollector`.
+     * @dev Returns the `_denominator`
+     */
+    function denominator() external view returns (uint256);
+
+    /**
+     * @dev Returns the special fees parameters for account
+     * @param account Account address
+     * @return A tuple of (uint256, uint256, uint256, bool) types
+     */
+    function fees(address account)
+        external
+        view
+        returns (uint256, uint256, uint256, bool);
+
+    /**
+     * @dev Returns the `_feesCollector`
      */
     function feesCollector() external view returns (address);
 
     /**
      * @dev Sets contract fees collector to a new account (`newFeesCollector`).
+     * @param newFeesCollector Account address of new fees collector
+     * @return A bool value indicating whether the operation succeeded
      */
     function setFeesCollector(address newFeesCollector) external returns (bool);
 
     /**
-     * @dev Calculates fee for account.
-     *
-     * @return An uint256 value representing the fee value.
-     */
-    function calculateFee(address account, uint256 amount)
-        external
-        returns (uint256);
-
-    /**
-     * @dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`.
-     *
-     * @return A bool value indicating whether the operation succeeded.
+     * @dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`
+     * @param newBasisPointsRate Value of basis rate
+     * @param newMinimumFee Value of minimum fee
+     * @param newMaximumFee Value of maximum fee
+     * @return A bool value indicating whether the operation succeeded
      */
     function setParams(
         uint256 newBasisPointsRate,
@@ -473,35 +457,64 @@ interface IERC20Fee {
     ) external returns (bool);
 
     /**
-     * @dev Emitted when `_basisPointsRate` and `_maximumFee` parameters
-     * have been changed.
+     * @dev Sets `basisPointsRate`, `minimumFee` and `maximumFee`
+     * for `account` in `_fees` mapping
+     * @param account Account address
+     * @param newBasisPoints Value for account basis rate
+     * @param newMinFee Value of account minimum fee
+     * @param newMaxFee Value of account maximum fee
+     * @param state Account special fees state (true/false)
+     * @return A bool value indicating whether the operation succeeded
+     */
+    function setSpecialParams(
+        address account,
+        uint256 newBasisPoints,
+        uint256 newMinFee,
+        uint256 newMaxFee,
+        bool state
+    ) external returns (bool);
+
+    /**
+     * @dev Calculates fee for a specific`account`
+     * @param account Sender account address
+     * @param amount Amount of tokens to send
+     * @return An uint256 value representing the account fee
+     */
+    function calculateFee(address account, uint256 amount)
+        external
+        returns (uint256);
+
+    /**
+     * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`
+     * parameters have been changed.
      */
     event Params(
-        uint256 indexed newBasisPointsRate,
-        uint256 indexed newMaximumFee
+        uint256 indexed newBasisPoints,
+        uint256 indexed newMinFee,
+        uint256 indexed newMaxFee
     );
 
     /**
-     * @dev Emitted when `basisPointsRate`, `maximumFee` and  `minimumFee`
-     * parameters for account have been changed.
+     * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`
+     * parameters have been changed.
      */
     event SpecialParams(
         address indexed account,
-        uint256 indexed newBasisPointsRate,
-        uint256 newMaximumFee,
-        uint256 newMinimumFee
+        uint256 indexed newBasisPoints,
+        uint256 newMinFee,
+        uint256 newMaxFee
     );
 
     /**
-     * @dev Emitted when `value` fees are moved to fees collector.
+     * @dev Emitted when fees are moved to fees collector
      */
-    event Fee(address indexed feesCollector, uint256 indexed fee);
+    event Fee(address indexed _feesCollector, uint256 indexed fee);
 
     /**
-     * @dev Emitted when `_feesCollector` parameter have been changed.
+     * @dev Emitted when `_feesCollector` parameter have been changed
      */
     event FeesCollector(
-        address indexed feesCollector,
+        address indexed _feesCollector,
         address indexed newFeesCollector
     );
 }
@@ -551,10 +564,8 @@ contract ERC20Detailed is IERC20 {
      * @dev Returns the number of decimals used to get its user representation.
      * For example, if `decimals` equals `2`, a balance of `505` tokens should
      * be displayed to a user as `5,05` (`505 / 10 ** 2`).
-     *
      * Tokens usually opt for a value of 18, imitating the relationship between
      * Ether and Wei.
-     *
      * NOTE: This information is only used for _display_ purposes: it in
      * no way affects any of the arithmetic of the contract, including
      * {IERC20-balanceOf} and {IERC20-transfer}.
@@ -583,15 +594,12 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     mapping(address => uint256) private _balances;
-    mapping(address => SpecialFee) private _fees;
     mapping(address => mapping(address => uint256)) private _allowances;
+    mapping(address => SpecialFee) private _fees;
 
     uint256 private _totalSupply;
 
-    /**
-     * @dev Aditional variables for use if deposit fees
-     * ever became necessary.
-     */
+    // additional variables for use if transaction fees ever became necessary
     uint256 private _basisPointsRate;
     uint256 private _minimumFee;
     uint256 private _maximumFee;
@@ -601,10 +609,13 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     /**
      * @dev Sets the values for `name`, `symbol`, `decimals`,
-     * `_basisPointsRate` and `_maximumFee`. 
-     *
-     * `name`, `symbol`, `decimals` values are immutable: 
-     * they can only be set once during construction.
+     * `_basisPointsRate`, `_maximumFee`, `_feesCollector`
+     * and `_denominator`
+     * @param name The name of the token
+     * @param symbol The symbol of the token 
+     * @param decimals The number of decimals the token uses
+     * @notice `name`, `symbol`, `decimals` and _denominator
+     * values are immutable: they can only be set once during construction
      */
     constructor(string memory name, string memory symbol, uint8 decimals)
         public
@@ -659,13 +670,6 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     /**
-     * @dev See {IERC20Fee-feesCollector}.
-     */
-    function feesCollector() public view returns (address) {
-        return _feesCollector;
-    }
-
-    /**
      * @dev See {IERC20-getSpecialFeesForAccount}.
      */
     function fees(address account)
@@ -679,6 +683,13 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
             _fees[account].maximumFee,
             _fees[account].isActive
         );
+    }
+
+    /**
+     * @dev See {IERC20Fee-feesCollector}.
+     */
+    function feesCollector() public view returns (address) {
+        return _feesCollector;
     }
 
     /**
@@ -709,7 +720,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
         _basisPointsRate = newBasisPoints;
         _minimumFee = newMinFee;
         _maximumFee = newMaxFee;
-        emit Params(_basisPointsRate, _maximumFee);
+        emit Params(newBasisPoints, newMinFee, newMaxFee);
         return true;
     }
 
@@ -765,9 +776,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     /**
      * @dev See {IERC20-transfer}.
-     *
      * Requirements:
-     *
      * - `recipient` cannot be the zero address.
      * - the caller must have a balance of at least `amount`.
      */
@@ -789,9 +798,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     /**
      * @dev See {IERC20-approve}.
-     *
      * Requirements:
-     *
      * - `spender` cannot be the zero address.
      */
     function approve(address spender, uint256 amount) public returns (bool) {
@@ -801,10 +808,8 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     /**
      * @dev See {IERC20-transferFrom}.
-     *
      * Emits an {Approval} event indicating the updated allowance. This is not
      * required by the EIP. See the note at the beginning of {ERC20};
-     *
      * Requirements:
      * - `sender` and `recipient` cannot be the zero address.
      * - `sender` must have a balance of at least `amount`.
@@ -829,14 +834,10 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     /**
      * @dev Atomically increases the allowance granted to `spender` by the caller.
-     *
      * This is an alternative to {approve} that can be used as a mitigation for
      * problems described in {IERC20-approve}.
-     *
      * Emits an {Approval} event indicating the updated allowance.
-     *
      * Requirements:
-     *
      * - `spender` cannot be the zero address.
      */
     function increaseAllowance(address spender, uint256 addedValue)
@@ -853,14 +854,10 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     /**
      * @dev Atomically decreases the allowance granted to `spender` by the caller.
-     *
      * This is an alternative to {approve} that can be used as a mitigation for
      * problems described in {IERC20-approve}.
-     *
      * Emits an {Approval} event indicating the updated allowance.
-     *
      * Requirements:
-     *
      * - `spender` cannot be the zero address.
      * - `spender` must have allowance for the caller of at least
      * `subtractedValue`.
@@ -882,14 +879,10 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     /**
      * @dev Moves tokens `amount` from `sender` to `recipient`.
-     *
      * This is internal function is equivalent to {transfer}, and can be used to
      * e.g. implement automatic token fees, slashing mechanisms, etc.
-     *
      * Emits a {Transfer} event.
-     *
      * Requirements:
-     *
      * - `sender` cannot be the zero address.
      * - `recipient` cannot be the zero address.
      * - `sender` must have a balance of at least `amount`.
@@ -928,11 +921,8 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     /** @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
-     *
      * Emits a {Transfer} event with `from` set to the zero address.
-     *
      * Requirements
-     *
      * - `to` cannot be the zero address.
      */
     function _mint(address account, uint256 amount) internal {
@@ -946,11 +936,8 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     /**
      * @dev Destroys `amount` tokens from `account`, reducing the
      * total supply.
-     *
      * Emits a {Transfer} event with `to` set to the zero address.
-     *
      * Requirements
-     *
      * - `account` cannot be the zero address.
      * - `account` must have at least `amount` tokens.
      */
@@ -967,14 +954,10 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     /**
      * @dev Sets `amount` as the allowance of `spender` over the `owner`s tokens.
-     *
      * This is internal function is equivalent to `approve`, and can be used to
      * e.g. set automatic allowances for certain subsystems, etc.
-     *
      * Emits an {Approval} event.
-     *
      * Requirements:
-     *
      * - `owner` cannot be the zero address.
      * - `spender` cannot be the zero address.
      */
@@ -989,7 +972,6 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     /**
      * @dev Destroys `amount` tokens from `account`.`amount` is then deducted
      * from the caller's allowance.
-     *
      * See {_burn} and {_approve}.
      */
     function _burnFrom(address account, uint256 amount) internal {
