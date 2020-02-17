@@ -5,27 +5,25 @@
 
 ## Developer Tools
 
-- [Openzepplin Contracts](https://openzeppelin.com/contracts/)
-- [Truffle](https://trufflesuite.com/)
+-   [Openzepplin Contracts](https://openzeppelin.com/contracts/)
+-   [Truffle](https://trufflesuite.com/)
 
 ## Test
 
 ```bash
-npm run test
+$ npm run test
 ```
 
 ## Coverage
 
 ```bash
-npm run coverage
+$ npm run coverage
 ```
 
 ## Dist
 
 ```bash
-make production
+$ make production
 ```
 
 # Documentation
-
-<!-- todo -->
