@@ -1,7 +1,4 @@
 module.exports = {
-    norpc: true,
-    testCommand: "npm run test",
-    compileCommand: "npm run compile",
     skipFiles: [
         "Migrations.sol",
         "utils/StableCoinDist.sol",
