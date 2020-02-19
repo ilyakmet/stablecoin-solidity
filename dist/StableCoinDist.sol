@@ -2,7 +2,6 @@
 
 pragma solidity ^0.5.0;
 
-
 /**
  * @title Roles
  * @dev Library for managing addresses assigned to a Role.
@@ -46,7 +45,6 @@ library Roles {
 
 pragma solidity ^0.5.0;
 
-
 /*
  * @dev Provides information about the current execution context, including the
  * sender of the transaction and its data. While these are generally available
@@ -76,7 +74,6 @@ contract Context {
 // File: contracts/@openzeppelin/contracts/math/SafeMath.sol
 
 pragma solidity ^0.5.0;
-
 
 /**
  * @dev Wrappers over Solidity's arithmetic operations with added overflow
@@ -228,7 +225,6 @@ library SafeMath {
 
 pragma solidity ^0.5.0;
 
-
 /**
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
@@ -314,7 +310,6 @@ contract Ownable is Context {
 
 pragma solidity ^0.5.0;
 
-
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP. Does not include
  * the optional functions; to access them see {ERC20Detailed}.
@@ -395,7 +390,6 @@ interface IERC20 {
 // File: contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol
 
 pragma solidity ^0.5.0;
-
 
 /**
  * @dev Interface of the ERC20Fee standard.
@@ -523,7 +517,6 @@ interface IERC20Fee {
 
 pragma solidity ^0.5.0;
 
-
 /**
  * @dev Optional functions from the ERC20 standard.
  */
@@ -578,7 +571,6 @@ contract ERC20Detailed is IERC20 {
 // File: contracts/@openzeppelin/contracts/token/ERC20/ERC20Fee.sol
 
 pragma solidity ^0.5.0;
-
 
 /**
  * @dev Implementation of the {IERC20Fee} interface.
@@ -990,6 +982,5 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 // File: contracts/utils/StableCoinDist.sol
 
 pragma solidity ^0.5.0;
-
 
 contract StableCoin is ERC20Fee {}
