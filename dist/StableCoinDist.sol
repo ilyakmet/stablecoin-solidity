@@ -799,7 +799,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     /**
-     * @dev See {IERC20-transferFrom}.
+     * @dev See {IERC20-transferFrom}
      * Emits an {Approval} event indicating the updated allowance. This is not
      * required by the EIP. See the note at the beginning of {ERC20};
      * Requirements:
