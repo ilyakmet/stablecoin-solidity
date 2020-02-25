@@ -326,12 +326,12 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_feesCollector\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"fee\",\"type\":\"uint256\"}],\"name\":\"Fee\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_feesCollector\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newFeesCollector\",\"type\":\"address\"}],\"name\":\"FeesCollector\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newBasisPoints\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newMinFee\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newMaxFee\",\"type\":\"uint256\"}],\"name\":\"Params\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newBasisPoints\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newMinFee\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newMaxFee\",\"type\":\"uint256\"}],\"name\":\"SpecialParams\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"basisPointsRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"calculateFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"denominator\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"fees\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"feesCollector\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"maximumFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minimumFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newFeesCollector\",\"type\":\"address\"}],\"name\":\"setFeesCollector\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newBasisPointsRate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMinimumFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMaximumFee\",\"type\":\"uint256\"}],\"name\":\"setParams\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"newBasisPoints\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMinFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMaxFee\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"state\",\"type\":\"bool\"}],\"name\":\"setSpecialParams\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface of the ERC20Fee standard.\",\"methods\":{\"basisPointsRate()\":{\"details\":\"Returns the `_basisPointsRate`\"},\"calculateFee(address,uint256)\":{\"details\":\"Calculates fee for a specific`account`\",\"params\":{\"account\":\"Sender account address\",\"amount\":\"Amount of tokens to send\"},\"return\":\"An uint256 value representing the account fee\"},\"denominator()\":{\"details\":\"Returns the `_denominator`\"},\"fees(address)\":{\"details\":\"Returns the special fees parameters for account\",\"params\":{\"account\":\"Account address\"},\"return\":\"A tuple of (uint256, uint256, uint256, bool) types\"},\"feesCollector()\":{\"details\":\"Returns the `_feesCollector`\"},\"maximumFee()\":{\"details\":\"Returns the `_maximumFee`\"},\"minimumFee()\":{\"details\":\"Returns the `_minimumFee`\"},\"setFeesCollector(address)\":{\"details\":\"Sets contract fees collector to a new account (`newFeesCollector`).\",\"params\":{\"newFeesCollector\":\"Account address of new fees collector\"},\"return\":\"A bool value indicating whether the operation succeeded\"},\"setParams(uint256,uint256,uint256)\":{\"details\":\"Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`\",\"params\":{\"newBasisPointsRate\":\"Value of basis rate\",\"newMaximumFee\":\"Value of maximum fee\",\"newMinimumFee\":\"Value of minimum fee\"},\"return\":\"A bool value indicating whether the operation succeeded\"},\"setSpecialParams(address,uint256,uint256,uint256,bool)\":{\"details\":\"Sets `basisPointsRate`, `minimumFee` and `maximumFee` for `account` in `_fees` mapping\",\"params\":{\"account\":\"Account address\",\"newBasisPoints\":\"Value for account basis rate\",\"newMaxFee\":\"Value of account maximum fee\",\"newMinFee\":\"Value of account minimum fee\",\"state\":\"Account special fees state (true/false)\"},\"return\":\"A bool value indicating whether the operation succeeded\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol\":\"IERC20Fee\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol\":{\"keccak256\":\"0x94d0bb53f8292fb4e8f934eaf8ec5499314d9a44c7b6d04c4768e1c643a3df70\",\"urls\":[\"bzz-raw://32c06ea915d3589f537c89457c4de64e5bd5414bbb70474fb2e3bf8b1aa76caa\",\"dweb:/ipfs/QmTjSThDPzD6fa2bzrM7SLPr52dW1CmHN8zP9VBZUByqoa\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_feesCollector\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"fee\",\"type\":\"uint256\"}],\"name\":\"Fee\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_feesCollector\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newFeesCollector\",\"type\":\"address\"}],\"name\":\"FeesCollector\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newBasisPoints\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newMinFee\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newMaxFee\",\"type\":\"uint256\"}],\"name\":\"Params\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newBasisPoints\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newMinFee\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newMaxFee\",\"type\":\"uint256\"}],\"name\":\"SpecialParams\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"basisPointsRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"calculateFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"denominator\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"fees\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"feesCollector\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"maximumFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minimumFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newFeesCollector\",\"type\":\"address\"}],\"name\":\"setFeesCollector\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newBasisPointsRate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMinimumFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMaximumFee\",\"type\":\"uint256\"}],\"name\":\"setParams\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"newBasisPoints\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMinFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newMaxFee\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"state\",\"type\":\"bool\"}],\"name\":\"setSpecialParams\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface of the ERC20Fee standard.\",\"methods\":{\"basisPointsRate()\":{\"details\":\"Returns the `_basisPointsRate`\"},\"calculateFee(address,uint256)\":{\"details\":\"Calculates fee for a specific`account`\",\"params\":{\"account\":\"Sender account address\",\"amount\":\"Amount of tokens to send\"},\"return\":\"An uint256 value representing the account fee\"},\"denominator()\":{\"details\":\"Returns the `_denominator`\"},\"fees(address)\":{\"details\":\"Returns the special fees parameters for account\",\"params\":{\"account\":\"Account address\"},\"return\":\"A tuple of (uint256, uint256, uint256, bool) types\"},\"feesCollector()\":{\"details\":\"Returns the `_feesCollector`\"},\"maximumFee()\":{\"details\":\"Returns the `_maximumFee`\"},\"minimumFee()\":{\"details\":\"Returns the `_minimumFee`\"},\"setFeesCollector(address)\":{\"details\":\"Sets contract fees collector to a new account (`newFeesCollector`).\",\"params\":{\"newFeesCollector\":\"Account address of new fees collector\"},\"return\":\"A bool value indicating whether the operation succeeded\"},\"setParams(uint256,uint256,uint256)\":{\"details\":\"Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`\",\"params\":{\"newBasisPointsRate\":\"Value of basis rate\",\"newMaximumFee\":\"Value of maximum fee\",\"newMinimumFee\":\"Value of minimum fee\"},\"return\":\"A bool value indicating whether the operation succeeded\"},\"setSpecialParams(address,uint256,uint256,uint256,bool)\":{\"details\":\"Sets `basisPointsRate`, `minimumFee` and `maximumFee` for `account` in `_fees` mapping\",\"params\":{\"account\":\"Account address\",\"newBasisPoints\":\"Value for account basis rate\",\"newMaxFee\":\"Value of account maximum fee\",\"newMinFee\":\"Value of account minimum fee\",\"state\":\"Account special fees state (true/false)\"},\"return\":\"A bool value indicating whether the operation succeeded\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol\":\"IERC20Fee\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol\":{\"keccak256\":\"0xe34c57c00f2d9c7b1a18b29e359cfb5f4997ec6b8766bdf2086ce15bda92d642\",\"urls\":[\"bzz-raw://de40dab5ebb150f5399e6ad285e341a6ad7757cb502b9b53f0c74842766d3834\",\"dweb:/ipfs/QmeFmoF9SkWXzoHiGzo3Cg1tmiis5nNZvnfJ2sD1SByGvT\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.5.0;\n\n/**\n * @dev Interface of the ERC20Fee standard.\n */\ninterface IERC20Fee {\n    /**\n     * @dev Returns the `_basisPointsRate`\n     */\n    function basisPointsRate() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_minimumFee`\n     */\n    function minimumFee() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_maximumFee`\n     */\n    function maximumFee() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_denominator`\n     */\n    function denominator() external view returns (uint256);\n\n    /**\n     * @dev Returns the special fees parameters for account\n     * @param account Account address\n     * @return A tuple of (uint256, uint256, uint256, bool) types\n     */\n    function fees(address account)\n        external\n        view\n        returns (uint256, uint256, uint256, bool);\n\n    /**\n     * @dev Returns the `_feesCollector`\n     */\n    function feesCollector() external view returns (address);\n\n    /**\n     * @dev Sets contract fees collector to a new account (`newFeesCollector`).\n     * @param newFeesCollector Account address of new fees collector\n     * @return A bool value indicating whether the operation succeeded\n     */\n    function setFeesCollector(address newFeesCollector) external returns (bool);\n\n    /**\n     * @dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n     * @param newBasisPointsRate Value of basis rate\n     * @param newMinimumFee Value of minimum fee\n     * @param newMaximumFee Value of maximum fee\n     * @return A bool value indicating whether the operation succeeded\n     */\n    function setParams(\n        uint256 newBasisPointsRate,\n        uint256 newMinimumFee,\n        uint256 newMaximumFee\n    ) external returns (bool);\n\n    /**\n     * @dev Sets `basisPointsRate`, `minimumFee` and `maximumFee`\n     * for `account` in `_fees` mapping\n     * @param account Account address\n     * @param newBasisPoints Value for account basis rate\n     * @param newMinFee Value of account minimum fee\n     * @param newMaxFee Value of account maximum fee\n     * @param state Account special fees state (true/false)\n     * @return A bool value indicating whether the operation succeeded\n     */\n    function setSpecialParams(\n        address account,\n        uint256 newBasisPoints,\n        uint256 newMinFee,\n        uint256 newMaxFee,\n        bool state\n    ) external returns (bool);\n\n    /**\n     * @dev Calculates fee for a specific`account`\n     * @param account Sender account address\n     * @param amount Amount of tokens to send\n     * @return An uint256 value representing the account fee\n     */\n    function calculateFee(address account, uint256 amount)\n        external\n        returns (uint256);\n\n    /**\n     * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n     * parameters have been changed.\n     */\n    event Params(\n        uint256 indexed newBasisPoints,\n        uint256 indexed newMinFee,\n        uint256 indexed newMaxFee\n    );\n\n    /**\n     * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n     * parameters have been changed.\n     */\n    event SpecialParams(\n        address indexed account,\n        uint256 indexed newBasisPoints,\n        uint256 newMinFee,\n        uint256 newMaxFee\n    );\n\n    /**\n     * @dev Emitted when fees are moved to fees collector\n     */\n    event Fee(address indexed _feesCollector, uint256 indexed fee);\n\n    /**\n     * @dev Emitted when `_feesCollector` parameter have been changed\n     */\n    event FeesCollector(\n        address indexed _feesCollector,\n        address indexed newFeesCollector\n    );\n}\n",
+  "source": "pragma solidity ^0.5.0;\n\n/**\n * @dev Interface of the ERC20Fee standard.\n */\ninterface IERC20Fee {\n    /**\n     * @dev Returns the `_basisPointsRate`\n     */\n    function basisPointsRate() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_minimumFee`\n     */\n    function minimumFee() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_maximumFee`\n     */\n    function maximumFee() external view returns (uint256);\n\n    /**\n     * @dev Returns the `_denominator`\n     */\n    function denominator() external view returns (uint256);\n\n    /**\n     * @dev Returns the special fees parameters for account\n     * @param account Account address\n     * @return A tuple of (uint256, uint256, uint256, bool) types\n     */\n    function fees(address account)\n        external\n        view\n        returns (uint256, uint256, uint256, bool);\n\n    /**\n     * @dev Returns the `_feesCollector`\n     */\n    function feesCollector() external view returns (address);\n\n    /**\n     * @dev Sets contract fees collector to a new account (`newFeesCollector`).\n     * @param newFeesCollector Account address of new fees collector\n     * @return A bool value indicating whether the operation succeeded\n     */\n    function setFeesCollector(address newFeesCollector) external returns (bool);\n\n    /**\n     * @dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n     * @param newBasisPointsRate Value of basis rate\n     * @param newMinimumFee Value of minimum fee\n     * @param newMaximumFee Value of maximum fee\n     * @return A bool value indicating whether the operation succeeded\n     */\n    function setParams(\n        uint256 newBasisPointsRate,\n        uint256 newMinimumFee,\n        uint256 newMaximumFee\n    ) external returns (bool);\n\n    /**\n     * @dev Sets `basisPointsRate`, `minimumFee` and `maximumFee`\n     * for `account` in `_fees` mapping\n     * @param account Account address\n     * @param newBasisPoints Value for account basis rate\n     * @param newMinFee Value of account minimum fee\n     * @param newMaxFee Value of account maximum fee\n     * @param state Account special fees state (true/false)\n     * @return A bool value indicating whether the operation succeeded\n     */\n    function setSpecialParams(\n        address account,\n        uint256 newBasisPoints,\n        uint256 newMinFee,\n        uint256 newMaxFee,\n        bool state\n    ) external returns (bool);\n\n    /**\n     * @dev Calculates fee for a specific`account`\n     * @param account Sender account address\n     * @param amount Amount of tokens to send\n     * @return An uint256 value representing the account fee\n     */\n    function calculateFee(address account, uint256 amount)\n        external\n        returns (uint256);\n\n    /**\n     * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n     * parameters have been changed.\n     */\n    event Params(\n        uint256 indexed newBasisPoints,\n        uint256 indexed newMinFee,\n        uint256 indexed newMaxFee\n    );\n\n    /**\n     * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\n     * parameters have been changed for specific account.\n     */\n    event SpecialParams(\n        address indexed account,\n        uint256 indexed newBasisPoints,\n        uint256 newMinFee,\n        uint256 newMaxFee\n    );\n\n    /**\n     * @dev Emitted when fees are moved to fees collector\n     */\n    event Fee(address indexed _feesCollector, uint256 indexed fee);\n\n    /**\n     * @dev Emitted when `_feesCollector` parameter have been changed\n     */\n    event FeesCollector(\n        address indexed _feesCollector,\n        address indexed newFeesCollector\n    );\n}\n",
   "sourcePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol",
   "ast": {
     "absolutePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol",
@@ -1405,7 +1405,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\nparameters have been changed.",
+            "documentation": "@dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\nparameters have been changed for specific account.",
             "id": 1411,
             "name": "SpecialParams",
             "nodeType": "EventDefinition",
@@ -1420,7 +1420,7 @@
                   "name": "account",
                   "nodeType": "VariableDeclaration",
                   "scope": 1411,
-                  "src": "3161:23:7",
+                  "src": "3182:23:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1431,7 +1431,7 @@
                     "id": 1402,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3161:7:7",
+                    "src": "3182:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1448,7 +1448,7 @@
                   "name": "newBasisPoints",
                   "nodeType": "VariableDeclaration",
                   "scope": 1411,
-                  "src": "3194:30:7",
+                  "src": "3215:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1459,7 +1459,7 @@
                     "id": 1404,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3194:7:7",
+                    "src": "3215:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1475,7 +1475,7 @@
                   "name": "newMinFee",
                   "nodeType": "VariableDeclaration",
                   "scope": 1411,
-                  "src": "3234:17:7",
+                  "src": "3255:17:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1486,7 +1486,7 @@
                     "id": 1406,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3234:7:7",
+                    "src": "3255:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1502,7 +1502,7 @@
                   "name": "newMaxFee",
                   "nodeType": "VariableDeclaration",
                   "scope": 1411,
-                  "src": "3261:17:7",
+                  "src": "3282:17:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1513,7 +1513,7 @@
                     "id": 1408,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3261:7:7",
+                    "src": "3282:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1523,9 +1523,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3151:133:7"
+              "src": "3172:133:7"
             },
-            "src": "3132:153:7"
+            "src": "3153:153:7"
           },
           {
             "anonymous": false,
@@ -1544,7 +1544,7 @@
                   "name": "_feesCollector",
                   "nodeType": "VariableDeclaration",
                   "scope": 1417,
-                  "src": "3375:30:7",
+                  "src": "3396:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1555,7 +1555,7 @@
                     "id": 1412,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3375:7:7",
+                    "src": "3396:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1572,7 +1572,7 @@
                   "name": "fee",
                   "nodeType": "VariableDeclaration",
                   "scope": 1417,
-                  "src": "3407:19:7",
+                  "src": "3428:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1583,7 +1583,7 @@
                     "id": 1414,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3407:7:7",
+                    "src": "3428:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1593,9 +1593,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3374:53:7"
+              "src": "3395:53:7"
             },
-            "src": "3365:63:7"
+            "src": "3386:63:7"
           },
           {
             "anonymous": false,
@@ -1614,7 +1614,7 @@
                   "name": "_feesCollector",
                   "nodeType": "VariableDeclaration",
                   "scope": 1423,
-                  "src": "3549:30:7",
+                  "src": "3570:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1625,7 +1625,7 @@
                     "id": 1418,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3549:7:7",
+                    "src": "3570:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1642,7 +1642,7 @@
                   "name": "newFeesCollector",
                   "nodeType": "VariableDeclaration",
                   "scope": 1423,
-                  "src": "3589:32:7",
+                  "src": "3610:32:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1653,7 +1653,7 @@
                     "id": 1420,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3589:7:7",
+                    "src": "3610:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1664,16 +1664,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3539:88:7"
+              "src": "3560:88:7"
             },
-            "src": "3520:108:7"
+            "src": "3541:108:7"
           }
         ],
         "scope": 1425,
-        "src": "77:3553:7"
+        "src": "77:3574:7"
       }
     ],
-    "src": "0:3631:7"
+    "src": "0:3652:7"
   },
   "legacyAST": {
     "absolutePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol",
@@ -2747,7 +2747,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\nparameters have been changed.",
+            "documentation": "@dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`\nparameters have been changed for specific account.",
             "id": 1411,
             "name": "SpecialParams",
             "nodeType": "EventDefinition",
@@ -2762,7 +2762,7 @@
                   "name": "account",
                   "nodeType": "VariableDeclaration",
                   "scope": 1411,
-                  "src": "3161:23:7",
+                  "src": "3182:23:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2773,7 +2773,7 @@
                     "id": 1402,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3161:7:7",
+                    "src": "3182:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2790,7 +2790,7 @@
                   "name": "newBasisPoints",
                   "nodeType": "VariableDeclaration",
                   "scope": 1411,
-                  "src": "3194:30:7",
+                  "src": "3215:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2801,7 +2801,7 @@
                     "id": 1404,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3194:7:7",
+                    "src": "3215:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2817,7 +2817,7 @@
                   "name": "newMinFee",
                   "nodeType": "VariableDeclaration",
                   "scope": 1411,
-                  "src": "3234:17:7",
+                  "src": "3255:17:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2828,7 +2828,7 @@
                     "id": 1406,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3234:7:7",
+                    "src": "3255:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2844,7 +2844,7 @@
                   "name": "newMaxFee",
                   "nodeType": "VariableDeclaration",
                   "scope": 1411,
-                  "src": "3261:17:7",
+                  "src": "3282:17:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2855,7 +2855,7 @@
                     "id": 1408,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3261:7:7",
+                    "src": "3282:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2865,9 +2865,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3151:133:7"
+              "src": "3172:133:7"
             },
-            "src": "3132:153:7"
+            "src": "3153:153:7"
           },
           {
             "anonymous": false,
@@ -2886,7 +2886,7 @@
                   "name": "_feesCollector",
                   "nodeType": "VariableDeclaration",
                   "scope": 1417,
-                  "src": "3375:30:7",
+                  "src": "3396:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2897,7 +2897,7 @@
                     "id": 1412,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3375:7:7",
+                    "src": "3396:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2914,7 +2914,7 @@
                   "name": "fee",
                   "nodeType": "VariableDeclaration",
                   "scope": 1417,
-                  "src": "3407:19:7",
+                  "src": "3428:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2925,7 +2925,7 @@
                     "id": 1414,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3407:7:7",
+                    "src": "3428:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2935,9 +2935,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3374:53:7"
+              "src": "3395:53:7"
             },
-            "src": "3365:63:7"
+            "src": "3386:63:7"
           },
           {
             "anonymous": false,
@@ -2956,7 +2956,7 @@
                   "name": "_feesCollector",
                   "nodeType": "VariableDeclaration",
                   "scope": 1423,
-                  "src": "3549:30:7",
+                  "src": "3570:30:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2967,7 +2967,7 @@
                     "id": 1418,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3549:7:7",
+                    "src": "3570:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2984,7 +2984,7 @@
                   "name": "newFeesCollector",
                   "nodeType": "VariableDeclaration",
                   "scope": 1423,
-                  "src": "3589:32:7",
+                  "src": "3610:32:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2995,7 +2995,7 @@
                     "id": 1420,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3589:7:7",
+                    "src": "3610:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -3006,24 +3006,24 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3539:88:7"
+              "src": "3560:88:7"
             },
-            "src": "3520:108:7"
+            "src": "3541:108:7"
           }
         ],
         "scope": 1425,
-        "src": "77:3553:7"
+        "src": "77:3574:7"
       }
     ],
-    "src": "0:3631:7"
+    "src": "0:3652:7"
   },
   "compiler": {
     "name": "solc",
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.13",
-  "updatedAt": "2020-02-16T14:49:27.434Z",
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-02-23T13:09:33.689Z",
   "devdoc": {
     "details": "Interface of the ERC20Fee standard.",
     "methods": {

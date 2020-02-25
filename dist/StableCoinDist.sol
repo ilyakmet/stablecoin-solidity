@@ -2,6 +2,7 @@
 
 pragma solidity ^0.5.0;
 
+
 /**
  * @title Roles
  * @dev Library for managing addresses assigned to a Role.
@@ -45,6 +46,7 @@ library Roles {
 
 pragma solidity ^0.5.0;
 
+
 /*
  * @dev Provides information about the current execution context, including the
  * sender of the transaction and its data. While these are generally available
@@ -74,6 +76,7 @@ contract Context {
 // File: contracts/@openzeppelin/contracts/math/SafeMath.sol
 
 pragma solidity ^0.5.0;
+
 
 /**
  * @dev Wrappers over Solidity's arithmetic operations with added overflow
@@ -225,6 +228,7 @@ library SafeMath {
 
 pragma solidity ^0.5.0;
 
+
 /**
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
@@ -306,7 +310,10 @@ contract Ownable is Context {
     }
 }
 
+// File: contracts/@openzeppelin/contracts/token/ERC20/IERC20.sol
+
 pragma solidity ^0.5.0;
+
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP. Does not include
@@ -388,6 +395,7 @@ interface IERC20 {
 // File: contracts/@openzeppelin/contracts/token/ERC20/IERC20Fee.sol
 
 pragma solidity ^0.5.0;
+
 
 /**
  * @dev Interface of the ERC20Fee standard.
@@ -488,7 +496,7 @@ interface IERC20Fee {
 
     /**
      * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`
-     * parameters have been changed.
+     * parameters have been changed for specific account.
      */
     event SpecialParams(
         address indexed account,
@@ -514,6 +522,7 @@ interface IERC20Fee {
 // File: contracts/@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol
 
 pragma solidity ^0.5.0;
+
 
 /**
  * @dev Optional functions from the ERC20 standard.
@@ -569,6 +578,7 @@ contract ERC20Detailed is IERC20 {
 // File: contracts/@openzeppelin/contracts/token/ERC20/ERC20Fee.sol
 
 pragma solidity ^0.5.0;
+
 
 /**
  * @dev Implementation of the {IERC20Fee} interface.
@@ -660,7 +670,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     /**
-     * @dev See {IERC20-getSpecialFeesForAccount}.
+     * @dev See {IERC20-fees}.
      */
     function fees(address account)
         public
@@ -797,7 +807,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     /**
-     * @dev See {IERC20-transferFrom}
+     * @dev See {IERC20-transferFrom}.
      * Emits an {Approval} event indicating the updated allowance. This is not
      * required by the EIP. See the note at the beginning of {ERC20};
      * Requirements:
@@ -980,5 +990,6 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 // File: contracts/utils/StableCoinDist.sol
 
 pragma solidity ^0.5.0;
+
 
 contract StableCoin is ERC20Fee {}
