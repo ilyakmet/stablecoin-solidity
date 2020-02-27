@@ -987,9 +987,9 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 }
 
-// File: contracts/utils/StableCoinDist.sol
+// File: contracts/utils/Dist.sol
 
 pragma solidity ^0.5.0;
 
 
-contract StableCoin is ERC20Fee {}
+contract Dist is ERC20Fee {}

@@ -8,7 +8,7 @@
         "coverage": "npx truffle run coverage --network coverage",
         "compile": "npx truffle compile",
         "prettier:solidity": "npx prettier --write contracts/*.sol",
-        "flatting": "npx truffle-flattener ./contracts/utils/StableCoinDist.sol > ./dist/StableCoinDist.sol"
+        "flatting": "npx truffle-flattener ./contracts/utils/Dist.sol > ./dist/Dist.sol"
     },
     "repository": {
         "type": "git",
