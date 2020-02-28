@@ -27,7 +27,7 @@ contract("StableCoin (negative)", accounts => {
     const recipient = accounts[2];
     const minter = accounts[3];
     const burner = accounts[4];
-    const feesCollector = accounts[3];
+    const feesCollector = accounts[5];
 
     beforeEach("setup contracts instances", async () => {
         stableCoinInstance = await StableCoin.new(name, symbol, decimals);
