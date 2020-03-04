@@ -52,6 +52,10 @@ $ make production
 $ make deploy-ropsten
 ```
 
+# Basic Example
+
+You can find a basic usage example [here](https://github.com/ilyakmet/stablecoin-solidity/tree/master/example).
+
 # Documentation
 
 # \{Ownable\}

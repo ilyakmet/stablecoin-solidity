@@ -38,6 +38,7 @@
         "solidity-coverage": "^0.7.1",
         "truffle": "^5.1.11",
         "truffle-flattener": "^1.4.2",
-        "truffle-hdwallet-provider": "^1.0.17"
+        "truffle-hdwallet-provider": "^1.0.17",
+        "web3": "^1.2.6"
     }
 }

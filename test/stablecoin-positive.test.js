@@ -130,6 +130,15 @@ contract("StableCoin (positive)", accounts => {
     });
 
     it("should transfer token with fee", async () => {
+        await stableCoinInstance.setParams(
+            basisPointsRate,
+            minimumFee,
+            maximumFee,
+            {
+                from: owner
+            }
+        );
+
         await stableCoinInstance.addMinter(minter, {
             from: owner
         });
