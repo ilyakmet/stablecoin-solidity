@@ -60,7 +60,7 @@ You can find a basic usage example [here](https://github.com/ilyakmet/stablecoin
 
 # \{Ownable\}
 
-Contract module which provides a basic access control mechanism, where there is an account (an owner) that can be granted exclusive access to specific functions. \* This module is used through inheritance. It will make available the modifier `onlyOwner`, which can be applied to your functions to restrict their use to the owner.
+The contract module provides a basic access control mechanism, where an account (owner) can be granted exclusive access to specific functions \* Module is used through inheritance. It will make available the modifier onlyOwner, which can be applied to your functions to restrict their use by the owner only.
 
 ## constructor - read
 
