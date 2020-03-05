@@ -56,6 +56,14 @@ $ make deploy-ropsten
 
 You can find a basic usage example [here](https://github.com/ilyakmet/stablecoin-solidity/tree/master/example).
 
+# MultiSig
+
+You can setup a multisignature wallet as the contract owner.
+
+Documentation: [Gnosis MultiSig](https://github.com/gnosis/MultiSigWallet).
+
+UI: [https://wallet.gnosis.pm/#/wallets](https://wallet.gnosis.pm/#/wallets)
+
 # Documentation
 
 # \{Ownable\}
@@ -263,12 +271,12 @@ Return : A bool value indicating whether the operation succeeded.
 ## basisPointsRate - view
 
 _No parameters_
-Returns the `_basisPointsRate`
+Returns the `_basisPointsRate`. The value represents the denominator in the internal function that calculates the fees.
 
 ## denominator - view
 
 _No parameters_
-Returns the `_denominator`
+Returns the `_denominator`. The value represents the denominator in the internal function that calculates the fees.
 
 ## fees - view
 
@@ -307,7 +315,13 @@ Implementation of the {IERC20Fee} interface.
 | decimals | uint8  | The number of decimals the token uses |
 
 Sets the values for `name`, `symbol`, `decimals`, `_basisPointsRate`, `_maximumFee`, `_feesCollector` and `_denominator`
-`name`, `symbol`, `decimals` and \_denominator values are immutable: they can only be set once during constructi
+`name`, `symbol`, `decimals` and \_denominator values are immutable: they can only be set once during construction. `_basisPointsRate` must be set depending on the `_denominator`.
+
+Fee formula:
+
+```js
+uint256 fee = (amount.mul(basisPoints)).div(_denominator);
+```
 
 ## decreaseAllowance - read
 
