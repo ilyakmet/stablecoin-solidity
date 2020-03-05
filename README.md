@@ -77,16 +77,6 @@ function Object() { [native code] }
 
 Event
 
-## isOwner - view
-
-_No parameters_
-Returns true if the caller is the current owner.
-
-## owner - view
-
-_No parameters_
-Returns the address of the current owner.
-
 ## renounceOwnership - read
 
 _No parameters_
@@ -99,6 +89,16 @@ Leaves the contract without owner. It will not be possible to call `onlyOwner` f
 | newOwner | address |
 
 Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.
+
+## isOwner - view
+
+_No parameters_
+Returns true if the caller is the current owner.
+
+## owner - view
+
+_No parameters_
+Returns the address of the current owner.
 
 # \{IERC20\}
 
@@ -124,15 +124,6 @@ Emitted when the allowance of a `spender` for an `owner` is set by a call to {ap
 
 Emitted when `value` tokens are moved from one account (`from`) to another (`to`). Note that `value` may be zero.
 
-## allowance - view
-
-| name    | type    | description |
-| ------- | ------- | ----------- |
-| owner   | address |
-| spender | address |
-
-Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default. This value changes when {approve} or {transferFrom} are called.
-
 ## approve - read
 
 | name    | type    | description |
@@ -141,19 +132,6 @@ Returns the remaining number of tokens that `spender` will be allowed to spend o
 | amount  | uint256 |
 
 Sets `amount` as the allowance of `spender` over the caller's tokens. Returns a boolean value indicating whether the operation succeeded. IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729 Emits an {Approval} event.
-
-## balanceOf - view
-
-| name    | type    | description |
-| ------- | ------- | ----------- |
-| account | address |
-
-Returns the amount of tokens owned by `account`.
-
-## totalSupply - view
-
-_No parameters_
-Returns the amount of tokens in existence.
 
 ## transfer - read
 
@@ -173,6 +151,28 @@ Moves `amount` tokens from the caller's account to `recipient`. Returns a boolea
 | amount    | uint256 |
 
 Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism. `amount` is then deducted from the caller's allowance. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.
+
+## allowance - view
+
+| name    | type    | description |
+| ------- | ------- | ----------- |
+| owner   | address |
+| spender | address |
+
+Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default. This value changes when {approve} or {transferFrom} are called.
+
+## balanceOf - view
+
+| name    | type    | description |
+| ------- | ------- | ----------- |
+| account | address |
+
+Returns the amount of tokens owned by `account`.
+
+## totalSupply - view
+
+_No parameters_
+Returns the amount of tokens in existence.
 
 # \{IERC20Fee\}
 
@@ -217,11 +217,6 @@ Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee` parameters have
 
 Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee` parameters have been changed for specific account.
 
-## basisPointsRate - view
-
-_No parameters_
-Returns the `_basisPointsRate`
-
 ## calculateFee - read
 
 | name    | type    | description              |
@@ -231,35 +226,6 @@ Returns the `_basisPointsRate`
 
 Calculates fee for a specific`account`
 Return : An uint256 value representing the account fee
-
-## denominator - view
-
-_No parameters_
-Returns the `_denominator`
-
-## fees - view
-
-| name    | type    | description     |
-| ------- | ------- | --------------- |
-| account | address | Account address |
-
-Returns the special fees parameters for account
-Return : A tuple of (uint256, uint256, uint256, bool) types
-
-## feesCollector - view
-
-_No parameters_
-Returns the `_feesCollector`
-
-## maximumFee - view
-
-_No parameters_
-Returns the `_maximumFee`
-
-## minimumFee - view
-
-_No parameters_
-Returns the `_minimumFee`
 
 ## setFeesCollector - read
 
@@ -292,7 +258,41 @@ Return : A bool value indicating whether the operation succeeded
 | state          | bool    | Account special fees state (true/false) |
 
 Sets `basisPointsRate`, `minimumFee` and `maximumFee` for `account` in `_fees` mapping
-Return : A bool value indicating whether the operation succeeded
+Return : A bool value indicating whether the operation succeeded.
+
+## basisPointsRate - view
+
+_No parameters_
+Returns the `_basisPointsRate`
+
+## denominator - view
+
+_No parameters_
+Returns the `_denominator`
+
+## fees - view
+
+| name    | type    | description     |
+| ------- | ------- | --------------- |
+| account | address | Account address |
+
+Returns the special fees parameters for account
+Return : A tuple of (uint256, uint256, uint256, bool) types
+
+## feesCollector - view
+
+_No parameters_
+Returns the `_feesCollector`
+
+## maximumFee - view
+
+_No parameters_
+Returns the `_maximumFee`
+
+## minimumFee - view
+
+_No parameters_
+Returns the `_minimumFee`
 
 # \{ERC20Fee\}
 
@@ -427,24 +427,6 @@ Give an account access to {MinterRole}
 Destroys `amount` of tokens from the caller. See {ERC20-\_mint}
 Return : bool
 
-## isBurner - view
-
-| name    | type    | description     |
-| ------- | ------- | --------------- |
-| account | address | Account address |
-
-Check if an account has {BurnerRole}
-Return : bool
-
-## isMinter - view
-
-| name    | type    | description     |
-| ------- | ------- | --------------- |
-| account | address | Account address |
-
-Check if an account has {MinterRole}
-Return : bool
-
 ## mint - read
 
 | name   | type    | description                  |
@@ -470,3 +452,21 @@ Remove an account's access to {BurnerRole}
 | account | address | Account address |
 
 Remove an account's access to {MinterRole}
+
+## isBurner - view
+
+| name    | type    | description     |
+| ------- | ------- | --------------- |
+| account | address | Account address |
+
+Check if an account has {BurnerRole}
+Return : bool
+
+## isMinter - view
+
+| name    | type    | description     |
+| ------- | ------- | --------------- |
+| account | address | Account address |
+
+Check if an account has {MinterRole}
+Return : bool

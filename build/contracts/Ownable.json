@@ -653,10 +653,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "1095:7:3",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1352,10 +1352,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "2243:7:3",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2124,10 +2124,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "1095:7:3",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2823,10 +2823,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "2243:7:3",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -3035,8 +3035,8 @@
         "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
     },
     "networks": {},
-    "schemaVersion": "3.0.13",
-    "updatedAt": "2020-03-04T17:22:32.327Z",
+    "schemaVersion": "3.0.23",
+    "updatedAt": "2020-03-05T12:29:08.499Z",
     "devdoc": {
         "details": "Contract module which provides a basic access control mechanism, where there is an account (an owner) that can be granted exclusive access to specific functions. * This module is used through inheritance. It will make available the modifier `onlyOwner`, which can be applied to your functions to restrict their use to the owner.",
         "methods": {

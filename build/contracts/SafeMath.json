@@ -201,10 +201,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "918:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -649,10 +649,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "1810:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1195,10 +1195,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "2495:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1648,10 +1648,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "3841:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2206,10 +2206,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "5182:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2618,10 +2618,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "918:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -3066,10 +3066,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "1810:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -3612,10 +3612,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "2495:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4065,10 +4065,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "3841:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4623,10 +4623,10 @@
                                             "name": "require",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [
-                                                1738,
-                                                1739
+                                                1729,
+                                                1730
                                             ],
-                                            "referencedDeclaration": 1739,
+                                            "referencedDeclaration": 1730,
                                             "src": "5182:7:2",
                                             "typeDescriptions": {
                                                 "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4847,8 +4847,8 @@
         "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
     },
     "networks": {},
-    "schemaVersion": "3.0.13",
-    "updatedAt": "2020-03-04T17:22:32.324Z",
+    "schemaVersion": "3.0.23",
+    "updatedAt": "2020-03-05T12:29:08.495Z",
     "devdoc": {
         "details": "Wrappers over Solidity's arithmetic operations with added overflow checks. Arithmetic operations in Solidity wrap on overflow. This can easily result in bugs, because programmers usually assume that an overflow raises an error, which is the standard behavior in high level programming languages. `SafeMath` restores this intuition by reverting the transaction when an operation overflows. Using this library instead of the unchecked operations eliminates an entire class of bugs, so it's recommended to use it always.",
         "methods": {}

@@ -475,16 +475,6 @@ interface IERC20Fee {
     ) external returns (bool);
 
     /**
-     * @dev Calculates fee for a specific`account`
-     * @param account Sender account address
-     * @param amount Amount of tokens to send
-     * @return An uint256 value representing the account fee
-     */
-    function calculateFee(address account, uint256 amount)
-        external
-        returns (uint256);
-
-    /**
      * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`
      * parameters have been changed.
      */
@@ -747,10 +737,14 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     /**
-     * @dev See {IERC20Fee-calculateFee}.
+     * @dev Calculates fee for a specific`account`
+     * @param account Sender account address
+     * @param amount Amount of tokens to send
+     * @return An uint256 value representing the account fee
      */
     function calculateFee(address account, uint256 amount)
-        public
+        internal
+        view
         returns (uint256)
     {
         (uint256 basisPoints, uint256 minFee, uint256 maxFee, bool active) = fees(
