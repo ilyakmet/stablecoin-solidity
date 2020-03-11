@@ -9,16 +9,20 @@ Owner (Ropsten): `0x06140f7878921C5DeF1E2b93376B1B5bdfdF0C57`
 
 # Developer Tools
 
--   [Openzepplin Contracts](https://openzeppelin.com/contracts/)
+-   [Openzeppelin Contracts](https://openzeppelin.com/contracts/)
 -   [Truffle](https://trufflesuite.com/)
 
 ## Start
 
-> Create `.infura` and `.secret` files before deployment.
+> Create `.infura`, `.secret` files and `dist` directory before deployment.
+
+1. Installing dependencies:
 
 ```bash
 $ npm install
 ```
+
+2. Сreating a dist:
 
 ```bash
 $ make production
@@ -34,12 +38,6 @@ $ npm run test
 
 ```bash
 $ npm run coverage
-```
-
-## Dist
-
-```bash
-$ make production
 ```
 
 ## Deploy
