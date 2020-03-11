@@ -8,15 +8,15 @@
       "type": "constructor"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"./stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol\":\"Context\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"./stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0xcb57d69f9ed1612fa5bc7447b772d0767a4c42302b94ef8ed5167e232d57a114\",\"urls\":[\"bzz-raw://7c5a96302151e3cda7c4acef68f254e1dc48697eb34b773ef9c76a24d21933b3\",\"dweb:/ipfs/QmNVbqV3ehZ1jcdz4cVcaR2VsKqntAJmimNHrdgiYs5LLe\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol\":\"Context\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0xcb57d69f9ed1612fa5bc7447b772d0767a4c42302b94ef8ed5167e232d57a114\",\"urls\":[\"bzz-raw://7c5a96302151e3cda7c4acef68f254e1dc48697eb34b773ef9c76a24d21933b3\",\"dweb:/ipfs/QmNVbqV3ehZ1jcdz4cVcaR2VsKqntAJmimNHrdgiYs5LLe\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\n\n/*\n * @dev Provides information about the current execution context, including the\n * sender of the transaction and its data. While these are generally available\n * via msg.sender and msg.data, they should not be accessed in such a direct\n * manner, since when dealing with GSN meta-transactions the account sending and\n * paying for execution may not be the actual sender (as far as an application\n * is concerned).\n * This contract is only required for intermediate, library-like contracts.\n */\ncontract Context {\n    // Empty internal constructor, to prevent people from mistakenly deploying\n    // an instance of this contract, which should be used via inheritance.\n    constructor() internal {}\n    // solhint-disable-previous-line no-empty-blocks\n\n    function _msgSender() internal view returns (address payable) {\n        return msg.sender;\n    }\n\n    function _msgData() internal view returns (bytes memory) {\n        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691\n        return msg.data;\n    }\n}\n",
-  "sourcePath": "./stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol",
+  "sourcePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol",
   "ast": {
-    "absolutePath": "./stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol",
+    "absolutePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol",
     "exportedSymbols": {
       "Context": [
         26
@@ -96,7 +96,7 @@
                       "name": "msg",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1726,
+                      "referencedDeclaration": 1719,
                       "src": "862:3:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_magic_message",
@@ -190,7 +190,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1740,
+                    "referencedDeclaration": 1733,
                     "src": "952:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$26",
@@ -210,7 +210,7 @@
                       "name": "msg",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1726,
+                      "referencedDeclaration": 1719,
                       "src": "1092:3:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_magic_message",
@@ -298,7 +298,7 @@
     "src": "0:1110:0"
   },
   "legacyAST": {
-    "absolutePath": "./stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol",
+    "absolutePath": "/Users/ilya/Documents/GitHub/stablecoin-solidity/contracts/@openzeppelin/contracts/GSN/Context.sol",
     "exportedSymbols": {
       "Context": [
         26
@@ -378,7 +378,7 @@
                       "name": "msg",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1726,
+                      "referencedDeclaration": 1719,
                       "src": "862:3:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_magic_message",
@@ -472,7 +472,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1740,
+                    "referencedDeclaration": 1733,
                     "src": "952:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$26",
@@ -492,7 +492,7 @@
                       "name": "msg",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1726,
+                      "referencedDeclaration": 1719,
                       "src": "1092:3:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_magic_message",
@@ -585,7 +585,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-03-05T12:29:08.486Z",
+  "updatedAt": "2020-03-11T13:31:04.509Z",
   "devdoc": {
     "methods": {}
   },

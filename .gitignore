@@ -1,9 +1,8 @@
 node_modules
 package-lock.json
-contracts/*
 coverage
 coverage.json
 .secret
 .infura
-READMEFINAL.md
 .DS_Store
+dist
