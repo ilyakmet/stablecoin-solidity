@@ -48,15 +48,15 @@ interface IERC20Fee {
 
     /**
      * @dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`
-     * @param newBasisPointsRate Value of basis rate
-     * @param newMinimumFee Value of minimum fee
-     * @param newMaximumFee Value of maximum fee
+     * @param newBasisPoints Value of basis rate
+     * @param newMinFee Value of minimum fee
+     * @param newMaxFee Value of maximum fee
      * @return A bool value indicating whether the operation succeeded
      */
     function setFeeSize(
-        uint256 newBasisPointsRate,
-        uint256 newMinimumFee,
-        uint256 newMaximumFee
+        uint256 newBasisPoints,
+        uint256 newMinFee,
+        uint256 newMaxFee
     ) external returns (bool);
 
     /**
@@ -66,6 +66,7 @@ interface IERC20Fee {
      * @param newBasisPoints Value for account basis rate
      * @param newMinFee Value of account minimum fee
      * @param newMaxFee Value of account maximum fee
+     * @param state Account special fees state (true/false)
      * @return A bool value indicating whether the operation succeeded
      */
     function setIndividualFeeSize(
@@ -73,11 +74,8 @@ interface IERC20Fee {
         uint256 newBasisPoints,
         uint256 newMinFee,
         uint256 newMaxFee,
-    ) external onlyOwner returns (bool);
-
-    function cancelIndividualFeeSize(
-        address account
-    ) external onlyOwner returns (bool);
+        bool state
+    ) external returns (bool);
 
     /**
      * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`
@@ -100,9 +98,7 @@ interface IERC20Fee {
         uint256 newMaxFee
     );
 
-    event IndividualFeeSizeCanceled(
-        address indexed account
-    );
+    event IndividualFeeSizeCanceled(address indexed account);
 
     /**
      * @dev Emitted when fees are moved to fees collector

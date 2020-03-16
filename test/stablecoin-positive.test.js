@@ -35,7 +35,7 @@ contract("StableCoin (positive)", accounts => {
             from: owner
         });
 
-        await stableCoinInstance.setParams(
+        await stableCoinInstance.setFeeSize(
             basisPointsRate,
             minimumFee,
             maximumFee,
@@ -130,7 +130,7 @@ contract("StableCoin (positive)", accounts => {
     });
 
     it("should transfer token with fee", async () => {
-        await stableCoinInstance.setParams(
+        await stableCoinInstance.setFeeSize(
             basisPointsRate,
             minimumFee,
             maximumFee,
@@ -180,7 +180,7 @@ contract("StableCoin (positive)", accounts => {
     });
 
     it("should transfer token with special fee", async () => {
-        await stableCoinInstance.setSpecialParams(
+        await stableCoinInstance.setIndividualFeeSize(
             spender,
             specialFee.basisPointsRate,
             specialFee.minimumFee,

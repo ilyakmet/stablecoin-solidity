@@ -13,7 +13,7 @@ import "./ERC20Detailed.sol";
 contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     using SafeMath for uint256;
 
-    struct IndividualFeeSize {
+    struct SpecialFee {
         uint256 basisPointsRate;
         uint256 minimumFee;
         uint256 maximumFee;
@@ -22,7 +22,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     mapping(address => uint256) private _balances;
     mapping(address => mapping(address => uint256)) private _allowances;
-    mapping(address => IndividualFeeSize) private _fees;
+    mapping(address => SpecialFee) private _fees;
 
     uint256 private _totalSupply;
 
@@ -38,7 +38,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
      * `_basisPointsRate`, `_maximumFee`, `_feesCollector`
      * and `_denominator`
      * @param name The name of the token
-     * @param symbol The symbol of the token
+     * @param symbol The symbol of the token 
      * @param decimals The number of decimals the token uses
      * @notice `name`, `symbol`, `decimals` and _denominator
      * values are immutable: they can only be set once during construction
@@ -143,47 +143,54 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
         uint256 newMinFee,
         uint256 newMaxFee
     ) external onlyOwner returns (bool) {
+        require(
+            newBasisPoints < _denominator,
+            "setFeeSize: newBasisPoints >= _denominator"
+        );
 
-        // Здесь не хватает пары проверок:
-        //   1. Раз newBasisPoints выражается в процентах, то не может быть больше 100%
-        //   2. newMaxFee >= newMinFee
+        require(newMaxFee >= newMinFee, "setFeeSize: newMaxFee < newMinFee");
 
         _basisPointsRate = newBasisPoints;
         _minimumFee = newMinFee;
         _maximumFee = newMaxFee;
-
         emit FeeSizeChanged(newBasisPoints, newMinFee, newMaxFee);
-
         return true;
     }
 
+    /**
+     * @dev See {IERC20Fee-setSpecialParams}.
+     */
     function setIndividualFeeSize(
         address account,
         uint256 newBasisPoints,
         uint256 newMinFee,
         uint256 newMaxFee,
+        bool state
     ) external onlyOwner returns (bool) {
-        _fees[account] = IndividualFeeRule({
+        SpecialFee memory newSpecialParams = SpecialFee({
             basisPointsRate: newBasisPoints,
             minimumFee: newMinFee,
             maximumFee: newMaxFee,
             isActive: state
         });
 
-        emit IndividualFeeSizeSet(account, newBasisPoints, newMinFee, newMaxFee);
-
+        _fees[account] = newSpecialParams;
+        emit IndividualFeeSizeSet(
+            account,
+            newBasisPoints,
+            newMinFee,
+            newMaxFee
+        );
         return true;
     }
 
-    function cancelIndividualFeeSize(
-        address account
-    ) external onlyOwner returns (bool) {
-        _fees[account] = IndividualFeeRule({
-            isActive: false
-        });
-
+    function cancelIndividualFeeSize(address account)
+        external
+        onlyOwner
+        returns (bool)
+    {
+        _fees[account].isActive = false;
         emit IndividualFeeSizeCanceled(account);
-
         return true;
     }
 

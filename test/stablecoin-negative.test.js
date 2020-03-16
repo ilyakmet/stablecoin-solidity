@@ -36,7 +36,7 @@ contract("StableCoin (negative)", accounts => {
             from: owner
         });
 
-        await stableCoinInstance.setParams(
+        await stableCoinInstance.setFeeSize(
             basisPointsRate,
             minimumFee,
             maximumFee,

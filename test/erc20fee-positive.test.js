@@ -44,7 +44,7 @@ contract("ERC20Fee (positive)", accounts => {
     });
 
     it("should set parameters", async () => {
-        await ERC20FeeInstance.setParams(
+        await ERC20FeeInstance.setFeeSize(
             basisPointsRate,
             minimumFee,
             maximumFee,
@@ -65,7 +65,7 @@ contract("ERC20Fee (positive)", accounts => {
     });
 
     it("should set special parameters", async () => {
-        await ERC20FeeInstance.setSpecialParams(
+        await ERC20FeeInstance.setIndividualFeeSize(
             user,
             specialFee.basisPointsRate,
             specialFee.minimumFee,
