@@ -13,7 +13,7 @@ import "./ERC20Detailed.sol";
 contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     using SafeMath for uint256;
 
-    struct SpecialFee {
+    struct IndividualFeeSize {
         uint256 basisPointsRate;
         uint256 minimumFee;
         uint256 maximumFee;
@@ -22,7 +22,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
     mapping(address => uint256) private _balances;
     mapping(address => mapping(address => uint256)) private _allowances;
-    mapping(address => SpecialFee) private _fees;
+    mapping(address => IndividualFeeSize) private _fees;
 
     uint256 private _totalSupply;
 
@@ -38,7 +38,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
      * `_basisPointsRate`, `_maximumFee`, `_feesCollector`
      * and `_denominator`
      * @param name The name of the token
-     * @param symbol The symbol of the token 
+     * @param symbol The symbol of the token
      * @param decimals The number of decimals the token uses
      * @notice `name`, `symbol`, `decimals` and _denominator
      * values are immutable: they can only be set once during construction
@@ -136,39 +136,54 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
     }
 
     /**
-     * @dev See {IERC20Fee-setParams}.
+     * @dev See {IERC20Fee-setFeeSize}.
      */
-    function setParams(
+    function setFeeSize(
         uint256 newBasisPoints,
         uint256 newMinFee,
         uint256 newMaxFee
     ) external onlyOwner returns (bool) {
+
+        // Здесь не хватает пары проверок:
+        //   1. Раз newBasisPoints выражается в процентах, то не может быть больше 100%
+        //   2. newMaxFee >= newMinFee
+
         _basisPointsRate = newBasisPoints;
         _minimumFee = newMinFee;
         _maximumFee = newMaxFee;
-        emit Params(newBasisPoints, newMinFee, newMaxFee);
+
+        emit FeeSizeChanged(newBasisPoints, newMinFee, newMaxFee);
+
         return true;
     }
 
-    /**
-     * @dev See {IERC20Fee-setSpecialParams}.
-     */
-    function setSpecialParams(
+    function setIndividualFeeSize(
         address account,
         uint256 newBasisPoints,
         uint256 newMinFee,
         uint256 newMaxFee,
-        bool state
     ) external onlyOwner returns (bool) {
-        SpecialFee memory newSpecialParams = SpecialFee({
+        _fees[account] = IndividualFeeRule({
             basisPointsRate: newBasisPoints,
             minimumFee: newMinFee,
             maximumFee: newMaxFee,
             isActive: state
         });
 
-        _fees[account] = newSpecialParams;
-        emit SpecialParams(account, newBasisPoints, newMinFee, newMaxFee);
+        emit IndividualFeeSizeSet(account, newBasisPoints, newMinFee, newMaxFee);
+
+        return true;
+    }
+
+    function cancelIndividualFeeSize(
+        address account
+    ) external onlyOwner returns (bool) {
+        _fees[account] = IndividualFeeRule({
+            isActive: false
+        });
+
+        emit IndividualFeeSizeCanceled(account);
+
         return true;
     }
 
