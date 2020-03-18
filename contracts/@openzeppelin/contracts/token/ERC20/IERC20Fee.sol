@@ -103,12 +103,12 @@ interface IERC20Fee {
     /**
      * @dev Emitted when fees are moved to fees collector
      */
-    event Fee(address indexed _feesCollector, uint256 indexed fee);
+    event FeeTransferred(address indexed _feesCollector, uint256 indexed fee);
 
     /**
      * @dev Emitted when `_feesCollector` parameter have been changed
      */
-    event FeesCollector(
+    event FeesCollectorSet(
         address indexed _feesCollector,
         address indexed newFeesCollector
     );
