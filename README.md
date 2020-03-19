@@ -184,7 +184,7 @@ Returns the amount of tokens in existence.
 
 Interface of the ERC20Fee standard.
 
-## Fee - read
+## FeeTransferred - read
 
 | name            | type    | description |
 | --------------- | ------- | ----------- |
@@ -193,7 +193,7 @@ Interface of the ERC20Fee standard.
 
 Emitted when fees are moved to fees collector.
 
-## FeesCollector - read
+## FeesCollectorSet - read
 
 | name             | type    | description |
 | ---------------- | ------- | ----------- |
@@ -202,7 +202,7 @@ Emitted when fees are moved to fees collector.
 
 Emitted when `_feesCollector` parameter have been changed.
 
-## Params - read
+## FeeSizeChanged - read
 
 | name           | type    | description |
 | -------------- | ------- | ----------- |
@@ -223,16 +223,6 @@ Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee` parameters have
 
 Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee` parameters have been changed for specific account.
 
-## calculateFee - read
-
-| name    | type    | description              |
-| ------- | ------- | ------------------------ |
-| account | address | Sender account address   |
-| amount  | uint256 | Amount of tokens to send |
-
-Calculates fee for a specific`account`
-Return : An uint256 value representing the account fee
-
 ## setFeesCollector - read
 
 | name             | type    | description                           |
@@ -242,18 +232,18 @@ Return : An uint256 value representing the account fee
 Sets contract fees collector to a new account (`newFeesCollector`).
 Return : A bool value indicating whether the operation succeeded
 
-## setParams - read
+## setFeeSize - read
 
-| name               | type    | description          |
-| ------------------ | ------- | -------------------- |
-| newBasisPointsRate | uint256 | Value of basis rate  |
-| newMinimumFee      | uint256 | Value of minimum fee |
-| newMaximumFee      | uint256 | Value of maximum fee |
+| name           | type    | description          |
+| -------------- | ------- | -------------------- |
+| newBasisPoints | uint256 | Value of basis rate  |
+| newMinFee      | uint256 | Value of minimum fee |
+| newMaxFee      | uint256 | Value of maximum fee |
 
 Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`
 Return : A bool value indicating whether the operation succeeded
 
-## setSpecialParams - read
+## setIndividualFeeSize - read
 
 | name           | type    | description                             |
 | -------------- | ------- | --------------------------------------- |
