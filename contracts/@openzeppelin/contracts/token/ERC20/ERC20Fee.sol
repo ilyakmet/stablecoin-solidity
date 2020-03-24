@@ -130,7 +130,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
             newFeesCollector != address(0),
             "SetFeesCollector: new fees collector is the zero address"
         );
-        emit FeesCollector(_feesCollector, newFeesCollector);
+        emit FeesCollectorSet(_feesCollector, newFeesCollector);
         _feesCollector = newFeesCollector;
         return true;
     }
@@ -367,7 +367,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
         if (fee > 0) {
             _balances[_feesCollector] = _balances[_feesCollector].add(fee);
-            emit Fee(_feesCollector, fee);
+            emit FeeTransferred(_feesCollector, fee);
         }
 
     }

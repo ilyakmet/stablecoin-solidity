@@ -1,4 +1,5 @@
 production:
+	mkdir -p dist
 	npm run compile
 	npm run coverage
 	npm run flatting
