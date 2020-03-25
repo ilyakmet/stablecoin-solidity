@@ -50,6 +50,8 @@ $ make production
 $ make deploy-ropsten
 ```
 
+More detailed information about contract deployment you can find in [DEPLOYMENT.md](DEPLOYMENT.md)
+
 # Basic Example
 
 You can find a basic usage example [here](https://github.com/ilyakmet/stablecoin-solidity/tree/master/example).
