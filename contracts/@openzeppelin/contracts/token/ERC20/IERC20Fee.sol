@@ -48,15 +48,15 @@ interface IERC20Fee {
 
     /**
      * @dev Sets `_basisPointsRate`, `_minimumFee` and `_maximumFee`
-     * @param newBasisPointsRate Value of basis rate
-     * @param newMinimumFee Value of minimum fee
-     * @param newMaximumFee Value of maximum fee
+     * @param newBasisPoints Value of basis rate
+     * @param newMinFee Value of minimum fee
+     * @param newMaxFee Value of maximum fee
      * @return A bool value indicating whether the operation succeeded
      */
-    function setParams(
-        uint256 newBasisPointsRate,
-        uint256 newMinimumFee,
-        uint256 newMaximumFee
+    function setFeeSize(
+        uint256 newBasisPoints,
+        uint256 newMinFee,
+        uint256 newMaxFee
     ) external returns (bool);
 
     /**
@@ -69,7 +69,7 @@ interface IERC20Fee {
      * @param state Account special fees state (true/false)
      * @return A bool value indicating whether the operation succeeded
      */
-    function setSpecialParams(
+    function setIndividualFeeSize(
         address account,
         uint256 newBasisPoints,
         uint256 newMinFee,
@@ -81,7 +81,7 @@ interface IERC20Fee {
      * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`
      * parameters have been changed.
      */
-    event Params(
+    event FeeSizeChanged(
         uint256 indexed newBasisPoints,
         uint256 indexed newMinFee,
         uint256 indexed newMaxFee
@@ -91,22 +91,24 @@ interface IERC20Fee {
      * @dev Emitted when `_basisPointsRate`, `_minimumFee` and `_maximumFee`
      * parameters have been changed for specific account.
      */
-    event SpecialParams(
+    event IndividualFeeSizeSet(
         address indexed account,
         uint256 indexed newBasisPoints,
         uint256 newMinFee,
         uint256 newMaxFee
     );
 
+    event IndividualFeeSizeCanceled(address indexed account);
+
     /**
      * @dev Emitted when fees are moved to fees collector
      */
-    event Fee(address indexed _feesCollector, uint256 indexed fee);
+    event FeeTransferred(address indexed _feesCollector, uint256 indexed fee);
 
     /**
      * @dev Emitted when `_feesCollector` parameter have been changed
      */
-    event FeesCollector(
+    event FeesCollectorSet(
         address indexed _feesCollector,
         address indexed newFeesCollector
     );

@@ -130,30 +130,37 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
             newFeesCollector != address(0),
             "SetFeesCollector: new fees collector is the zero address"
         );
-        emit FeesCollector(_feesCollector, newFeesCollector);
+        emit FeesCollectorSet(_feesCollector, newFeesCollector);
         _feesCollector = newFeesCollector;
         return true;
     }
 
     /**
-     * @dev See {IERC20Fee-setParams}.
+     * @dev See {IERC20Fee-setFeeSize}.
      */
-    function setParams(
+    function setFeeSize(
         uint256 newBasisPoints,
         uint256 newMinFee,
         uint256 newMaxFee
     ) external onlyOwner returns (bool) {
+        require(
+            newBasisPoints < _denominator,
+            "setFeeSize: newBasisPoints >= _denominator"
+        );
+
+        require(newMaxFee >= newMinFee, "setFeeSize: newMaxFee < newMinFee");
+
         _basisPointsRate = newBasisPoints;
         _minimumFee = newMinFee;
         _maximumFee = newMaxFee;
-        emit Params(newBasisPoints, newMinFee, newMaxFee);
+        emit FeeSizeChanged(newBasisPoints, newMinFee, newMaxFee);
         return true;
     }
 
     /**
      * @dev See {IERC20Fee-setSpecialParams}.
      */
-    function setSpecialParams(
+    function setIndividualFeeSize(
         address account,
         uint256 newBasisPoints,
         uint256 newMinFee,
@@ -168,7 +175,22 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
         });
 
         _fees[account] = newSpecialParams;
-        emit SpecialParams(account, newBasisPoints, newMinFee, newMaxFee);
+        emit IndividualFeeSizeSet(
+            account,
+            newBasisPoints,
+            newMinFee,
+            newMaxFee
+        );
+        return true;
+    }
+
+    function cancelIndividualFeeSize(address account)
+        external
+        onlyOwner
+        returns (bool)
+    {
+        _fees[account].isActive = false;
+        emit IndividualFeeSizeCanceled(account);
         return true;
     }
 
@@ -345,7 +367,7 @@ contract ERC20Fee is Context, Ownable, IERC20, IERC20Fee, ERC20Detailed {
 
         if (fee > 0) {
             _balances[_feesCollector] = _balances[_feesCollector].add(fee);
-            emit Fee(_feesCollector, fee);
+            emit FeeTransferred(_feesCollector, fee);
         }
 
     }
